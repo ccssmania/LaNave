@@ -1,0 +1,20 @@
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+footer {
+  clear: both;
+  position: relative;
+  margin-bottom: 0 !important;
+}
+
+html, body {
+  min-height: 100vh !important;
+}
+
+#app {
+  min-height: 100%;
+}
+
+/*# sourceMappingURL=app.css.map */
