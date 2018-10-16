@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
 
 class HomeController extends Controller
 {
@@ -23,7 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $products = Product::where('status', 0)->paginate(15);
+        return view('home', compact('products'));
     }
     public function about(){
         return view('public.about');
@@ -34,5 +36,11 @@ class HomeController extends Controller
     }
     public function contact(){
         return view('public.contact');
+    }
+
+
+    public function showProduct($id){
+        $product = Product::find($id);
+        return view('product.show', compact("product"));
     }
 }

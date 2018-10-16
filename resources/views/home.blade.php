@@ -7,7 +7,7 @@
     @if (Auth::guest())
     @include('public.home')
     @else
-        @php return redirect('/user');@endphp
+        @php  redirect('/user');@endphp
     @endif
 </div>
 @endsection

@@ -17,4 +17,23 @@ html, body {
   min-height: 100%;
 }
 
+.floating {
+  position: fixed;
+  bottom: 2em;
+  right: 2em;
+  z-index: 100;
+}
+
+.big-margin-top {
+  margin-top: 70px;
+}
+
+.big-margin-bot {
+  margin-bottom: 70px;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
 /*# sourceMappingURL=app.css.map */

@@ -1,42 +1,67 @@
-<div class="big-margin-top">
-    <div class="row">
-        <div class="col-md-10 big-margin-bot little-margin-left">
-            <div class="panel panel-primary big-margin-bot">
-                <div class="panel-heading">Product </div>
+<div class="">
+	<div class="row">
+		<div class="col-md-10 big-margin-bot little-margin-left">
+			<div class="panel" >
+				<div class="panel-heading text-black" style="background-color: #64b5f6;">Producto </div>
 				<form class="form-horizontal big-margin-top" method="{{$method}}" action="{{$url}}" enctype="multipart/form-data">
 					{{ csrf_field() }}
 					
-						<div class="form-group ">
-							<label class="col-md-4 control-label">Nombre </label>
-							<div class="col-md-6">
-								<input type="text" name="name"  placeholder="{{$product->name ? $product->name : 'Nombre'}}" class="form-control" {{$product->title ? '' : 'required'}}>
-							</div>
+					<div class="form-group ">
+						<label class="col-md-4 control-label">Nombre </label>
+						<div class="col-md-6">
+							<input type="text" name="name"  placeholder="{{$product->name ? $product->name : 'Nombre'}}" class="form-control" {{$product->name ? '' : 'required'}}>
 						</div>
-						<div class="form-group">
-				            <label  class="col-md-4 control-label">Description </label>
+					</div>
+					<div class="form-group">
+						<label  class="col-md-4 control-label">Description </label>
 
-				            <div class="col-md-6">
-				                <textarea class="textarea" name="description">{{$product->description ? $product->description : ''}} {{old('description') ? old('description') : ''}}</textarea>
+						<div class="col-md-6">
+							<textarea class="textarea" name="description">{{$product->description ? $product->description : ''}} {{old('description') ? old('description') : ''}}</textarea>
 
-				            </div>
-				        </div>
-						<div class="form-group">
-							<label class="col-md-4 control-label">Precio</label>
-							<div class="col-md-6">
-								<input type="number" step="0.5" name="price">
-							</div>
 						</div>
-						<div class="form-group">
-							
-							<div class="col-md-6 col-md-offset-4 text-right big-margin-bot">
-								<input type="submit" value="Enviar" class="btn btn-success">
-							</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 control-label">Precio</label>
+						<div class="col-md-6">
+							<input class="form-control" type="number" step="0.5" name="price" placeholder="{{$product->price ? $product->price : ''}}" {{$product->price ? '' : 'required'}}>
 						</div>
-						
+					</div>
+					<div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}">
+						<label class="col-md-4 control-label">Imagen/Foto</label>
+						<div class="col-md-6">
+							<table class="table">
+								<tr>
+									<th height="70" width="200">
+										<img class="img-circle img-responsive img-center"  src="{{url('/images/medium/p_'.$product->id.'.jpg')}}" onerror="this.src='{{url("/images/medium/perfil.png")}}'">
+									</th>
+									<th>
+										<h3>cambiar</h3>
+										<input type="file" class="form-control" name="file">
+										@if ($errors->has('file'))
+										<span class="help-block">
+											<strong>{{ $errors->first('file') }}</strong>
+										</span>
+										@endif
+									</th>
+								</tr>
+
+								<tr><th></th><th></th></tr>
+							</table>
+						</div>
+					</div>
+					<div class="form-group big-margin-bot">
+
+						<div class="col-md-6 text-right ">
+							<input type="submit" value="Enviar" class="btn btn-success">
+						</div>
+						<div class="col-md-6 ">
+							<a href="{{url('/products')}}" class="btn btn-info">Atrás</a>
+						</div>
+					</div>
 					
 				</form>
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 </div>
 
