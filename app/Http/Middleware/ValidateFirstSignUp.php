@@ -6,7 +6,7 @@ use Closure;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
-class ValidateFirstUserSignUp
+class ValidateFirstSignUp
 {
     /**
      * Handle an incoming request.

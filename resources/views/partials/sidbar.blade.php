@@ -7,11 +7,11 @@
                 <div class="user-panel">
                     <div class="pull-left image">
 
-                     <img src=". . ." onerror="this.src='{{url('images/small/perfil.png')}}';" class="img-circle" alt="User Image" />
+                     <img src="{{url('/images/small/u_'.Auth::user()->id.'.jpg')}}" onerror="this.src='{{url('images/small/perfil.png')}}';" class="img-circle" alt="User Image" />
 
                  </div>
                  <div class="pull-left info">
-                    <p>Nombre</p>
+                    <p>{{Auth::user()->name}}</p>
                     <!-- Status -->
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>

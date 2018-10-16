@@ -7,21 +7,21 @@
 		</ol>
 		<div class="carousel-inner" role="listbox">
 			<!-- Slide One - Set the background image for this slide in the line below -->
-			<div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">
+			<div class="carousel-item active" style="background-image: url('{{url('/images/banner_1.jpg')}}')">
 				<div class="carousel-caption d-none d-md-block">
 					<h3>{{config('app.name')}}</h3>
 					<p>This is a description for the first slide.</p>
 				</div>
 			</div>
 			<!-- Slide Two - Set the background image for this slide in the line below -->
-			<div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+			<div class="carousel-item" style="background-image: url('{{url('/images/banner_2.jpg')}}')">
 				<div class="carousel-caption d-none d-md-block">
 					<h3>{{config('app.name')}}</h3>
 					<p>This is a description for the second slide.</p>
 				</div>
 			</div>
 			<!-- Slide Three - Set the background image for this slide in the line below -->
-			<div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+			<div class="carousel-item" style="background-image: url('{{url('/images/banner_3.jpg')}}')">
 				<div class="carousel-caption d-none d-md-block">
 					<h3>{{config('app.name')}}</h3>
 					<p>This is a description for the third slide.</p>
@@ -132,7 +132,7 @@
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
 		</div>
 		<div class="col-lg-6">
-			<img class="img-fluid rounded" src="http://placehold.it/700x450" alt="">
+			<img class="img-fluid rounded" src="{{url('/images/h_.jpg')}}" alt="">
 		</div>
 	</div>
 	<!-- /.row -->
@@ -140,13 +140,6 @@
 	<hr>
 
 	<!-- Call to Action Section -->
-	<div class="row mb-4">
-		<div class="col-md-8">
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
-		</div>
-		<div class="col-md-4">
-			<a class="btn btn-lg btn-secondary btn-block" href="#">Call to Action</a>
-		</div>
-	</div>
+	
 
 </div>

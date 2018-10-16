@@ -34,6 +34,13 @@ Route::post('/product/delete/{id}', 'ProductController@destroy');
 
 //perfil routes
 Route::get('/perfil', 'PerfilController@index');
+Route::get('/perfil/edit/{id}', 'PerfilController@edit');
+Route::post('/perfil/edit/{id}', 'PerfilController@update');
+Route::post('/perfil/images', 'PerfilController@images');
+Route::get('/perfil/employe/create', 'PerfilController@createEmploye');
+Route::post('/perfil/employe/create', 'PerfilController@storeEmploye');
+Route::get('/perfil/employe/edit/{id}', 'PerfilController@editEmploye');
+Route::post('/perfil/employe/edit/{id}', 'PerfilController@updateEmploye');
 
 //path to find image
 Route::get('products/images/{filename}',function($filename){

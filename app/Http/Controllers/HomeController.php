@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
-
+use App\Contact;
+use App\Employe;
 class HomeController extends Controller
 {
     /**
@@ -28,14 +29,16 @@ class HomeController extends Controller
         return view('home', compact('products'));
     }
     public function about(){
-        return view('public.about');
+        $employees = Employe::all();
+        return view('public.about','employees');
     }
 
     public function services(){
         return view('public.services');
     }
     public function contact(){
-        return view('public.contact');
+        $contact = Contact::find(1);
+        return view('public.contact', compact("contact"));
     }
 
 
