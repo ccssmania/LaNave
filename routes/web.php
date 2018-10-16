@@ -32,8 +32,25 @@ Route::get('/product/{id}/edit','ProductController@edit');
 Route::post('/product/edit/{id}','ProductController@update');
 Route::post('/product/delete/{id}', 'ProductController@destroy');
 
+//perfil routes
+Route::get('/perfil', 'PerfilController@index');
+
 //path to find image
 Route::get('products/images/{filename}',function($filename){
+	$path = storage_path("app/images/$filename");
+
+
+	if(!\File::exists($path)) abort(404);
+	$file = \File::get($path);
+	$type = \File::mimeType($path);
+
+	$response = Response::make($file,200);
+	$response->header("Content-Type", $type);
+
+	return $response;
+});
+
+Route::get('/images/{filename}',function($filename){
 	$path = storage_path("app/images/$filename");
 
 

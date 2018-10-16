@@ -30,7 +30,7 @@
 
                     <a href="{{url('/products')}}"><i class="fa fa-car"></i><span>Productos</span></a>
                 </li>
-                <li class="{{Route::getCurrentRoute()->getActionName() == "App\Http\Controllers\PerfilController@index" ? 'active' : ''}}">
+                <li class="{{get_class(Route::getCurrentRoute()->getController()) == "App\Http\Controllers\PerfilController" ? 'active' : ''}}">
                     <a href="{{url('/perfil')}}"><i class="fa fa-user"></i><span>Perfil</span></a>
                 </li>
                     <!--<li class="treeview">
