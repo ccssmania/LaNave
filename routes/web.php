@@ -41,6 +41,8 @@ Route::get('/perfil/employe/create', 'PerfilController@createEmploye');
 Route::post('/perfil/employe/create', 'PerfilController@storeEmploye');
 Route::get('/perfil/employe/edit/{id}', 'PerfilController@editEmploye');
 Route::post('/perfil/employe/edit/{id}', 'PerfilController@updateEmploye');
+Route::get('/perfil/contact/edit/{id}', 'PerfilController@editContact');
+Route::post('/perfil/contact/edit/{id}', 'PerfilController@updateContact');
 
 //path to find image
 Route::get('products/images/{filename}',function($filename){

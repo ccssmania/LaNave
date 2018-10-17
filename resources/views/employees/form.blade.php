@@ -13,9 +13,15 @@
 						</div>
 					</div>
 					<div class="form-group ">
+						<label class="col-md-4 control-label">Cargo</label>
+						<div class="col-md-6">
+							<input type="text" name="position"  placeholder="{{$user->position ? $user->position : 'Cargo'}}" class="form-control" {{$user->position ? '' : 'required'}}>
+						</div>
+					</div>
+					<div class="form-group ">
 						<label class="col-md-4 control-label">Email </label>
 						<div class="col-md-6">
-							<input type="text" name="email"  placeholder="{{$user->email ? $user->email : 'Nombre'}}" class="form-control" {{$user->email ? '' : 'required'}}>
+							<input type="email" name="email"  placeholder="{{$user->email ? $user->email : 'Nombre'}}" class="form-control" {{$user->email ? '' : 'required'}}>
 						</div>
 					</div>
 					<div class="form-group ">

@@ -30,7 +30,8 @@ class HomeController extends Controller
     }
     public function about(){
         $employees = Employe::all();
-        return view('public.about','employees');
+        $contact = Contact::find(1);
+        return view('public.about',compact('employees', 'contact'));
     }
 
     public function services(){

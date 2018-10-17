@@ -36,4 +36,8 @@ html, body {
   display: inline-block;
 }
 
+.bordered-left {
+  border-left: solid 2px #fff;
+}
+
 /*# sourceMappingURL=app.css.map */

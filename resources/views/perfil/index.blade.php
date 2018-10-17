@@ -31,7 +31,7 @@
 	                    <p><em>{{$emp->name}}</em></p>
 	                    <p>{{$emp->email}}</p>
 	                    <p>{{$emp->number}}</p>
-	                    
+	                    <p>{{$emp->position}}</p>
                 	</div>
                 	<div class="col-md-6 text-left">
                 		<a href="{{url('/perfil/employe/edit/'.$emp->id)}}"><i class="fa fa-edit"></i></a>
@@ -59,6 +59,8 @@
 	                    <p><strong>Dirección:</strong> {{$contact->address }}</p>
 	                    <p><strong>Email:</strong>  {{$contact->email}}</p>
 	                    <p><strong>Teléfono:</strong>  {{$contact->number}}</p>
+	                    <br>
+	                    <p><strong>Sobre nosotros : </strong> {!!$contact->about!!} </p>
 	                    
                 	</div>
                 	<div class="col-md-6 text-left">
@@ -67,7 +69,7 @@
                 </th>
         </table>
 	</div>
-	<div class="col-md-7 col-ms-7">
+	<div class="col-md-7 col-ms-7 bordered-left">
 		<h1>Imágenes</h1>
         <table class="table">
             <tr>

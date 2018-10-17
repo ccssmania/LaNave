@@ -99,6 +99,9 @@ class PerfilController extends Controller
 		if(isset($request->number)){
 			$employe->number = $request->number;
 		}
+		if(isset($request->position)){
+			$employe->position = $request->position;
+		}
 		$hasFile = $request->hasFile('file') && $request->file->isValid();
 		if($employe->save()){
 			if($hasFile){
@@ -112,6 +115,24 @@ class PerfilController extends Controller
 		{
 			Session::flash('errorMessage', 'Algo salió mal');
             return redirect('/perfil');
+		}
+	}
+
+	//contact edit
+	public function editContact($id){
+		$contact = Contact::find($id);
+		return view('contact.edit',compact('contact'));
+	}
+	//contact update
+	public function updateContact(Request $request, $id){
+		$contact = Contact::find($id);
+		isset($request->about) ? $contact->about = $request->about : false;
+		isset($request->email) ? $contact->email = $request->email : false;
+		isset($request->address) ? $contact->address = $request->address : false;
+		isset($request->number) ? $contact->number = $request->number : false;
+		if($contact->save()){
+			Session::flash("message", "Actualizado");
+			return redirect("/perfil");
 		}
 	}
 	//Save Images
