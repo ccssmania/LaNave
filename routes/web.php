@@ -44,6 +44,14 @@ Route::post('/perfil/employe/edit/{id}', 'PerfilController@updateEmploye');
 Route::get('/perfil/contact/edit/{id}', 'PerfilController@editContact');
 Route::post('/perfil/contact/edit/{id}', 'PerfilController@updateContact');
 
+//mensaje de contacto
+Route::post('/contactus','ContactUsController@message');
+
+//calendar routes
+
+Route::get('/calendar', 'HomeController@google');
+
+
 //path to find image
 Route::get('products/images/{filename}',function($filename){
 	$path = storage_path("app/images/$filename");

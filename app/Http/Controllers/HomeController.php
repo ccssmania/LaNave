@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Contact;
 use App\Employe;
+use App\Http\Services\Google;
 class HomeController extends Controller
 {
     /**
@@ -18,6 +19,32 @@ class HomeController extends Controller
         //$this->middleware('auth');
     }
 
+
+    public function google(){
+        $calendar = Google::getClient();
+        $calendarId = 'primary';
+        $optParams = array(
+          'maxResults' => 10,
+          'orderBy' => 'startTime',
+          'singleEvents' => true,
+          'timeMin' => date('c'),
+      );
+        $results = $calendar->events->listEvents($calendarId, $optParams);
+        $events = $results->getItems();
+
+        if (empty($events)) {
+            print "No upcoming events found.\n";
+        } else {
+            print "Upcoming events:\n";
+            foreach ($events as $event) {
+                $start = $event->start->dateTime;
+                if (empty($start)) {
+                    $start = $event->start->date;
+                }
+                printf("%s (%s)\n", $event->getSummary(), $start);
+            }
+        }
+    }
     /**
      * Show the application dashboard.
      *

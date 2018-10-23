@@ -12,6 +12,16 @@ use Intervention\Image\ImageManagerStatic as Image;
 use Session;
 class PerfilController extends Controller
 {
+
+
+
+	public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+    
 	public function index(){
 		$user = Auth::user(); 
 		$contact = Contact::all()->first();
