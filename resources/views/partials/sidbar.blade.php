@@ -23,8 +23,13 @@
             <ul class="sidebar-menu" data-widget="tree" >
                 <li class="header">Menú</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="{{Route::getCurrentRoute()->getController() == "UserController" ? 'active' : ''}}">
-                    <a href="{{url('/')}}"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
+                <li class="treeview {{get_class(Route::getCurrentRoute()->getController()) == "App\Http\Controllers\TasksController" ? 'active' : ''}}">
+                    <a href="{{url('/tasks')}}"> <i class="fa fa-dashboard"></i><span>Dashboard</span><span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i></span></a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{url('/tasks/create')}}">Agregar Tarea</a></li>
+                            <li><a href="{{url('/tasks')}}">Dashboard</a></li>
+                        </ul>
                 </li>
                 <li class="{{get_class(Route::getCurrentRoute()->getController()) == "App\Http\Controllers\ProductController" ? 'active' : ''}}">
 

@@ -151,25 +151,25 @@ class PerfilController extends Controller
 			$this->validate($request,[
 				'banner_1' => 'mimes:jpg,png,jpeg',
 			]);
-			$image = Image::make($request->banner_1)->resize(1900,1080)->encode('jpg')->save(storage_path('app/images/banner_1.jpg'));
+			$image = Image::make($request->banner_1)->resize(1900,1080)->encode('jpg',100)->save(storage_path('app/images/banner_1.jpg'), 100);
 		}
 		if(isset($request->banner_2)){
 			$this->validate($request,[
 				'banner_2' => 'mimes:jpg,png,jpeg',
 			]);
-			$image = Image::make($request->banner_2)->resize(1900,1080)->encode('jpg')->save(storage_path('app/images/banner_2.jpg'));
+			$image = Image::make($request->banner_2)->resize(1900,1080)->encode('jpg',100)->save(storage_path('app/images/banner_2.jpg'), 100);
 		}
 		if(isset($request->banner_3)){
 			$this->validate($request,[
 				'banner_3' => 'mimes:jpg,png,jpeg',
 			]);
-			$image = Image::make($request->banner_3)->resize(1900,1080)->encode('jpg')->save(storage_path('app/images/banner_3.jpg'));
+			$image = Image::make($request->banner_3)->resize(1900,1080)->encode('jpg',100)->save(storage_path('app/images/banner_3.jpg'), 100);
 		}
 		if(isset($request->home_)){
 			$this->validate($request,[
 				'home_' => 'mimes:jpg,png,jpeg',
 			]);
-			$image = Image::make($request->home_)->resize(1900,1080)->encode('jpg')->save(storage_path('app/images/h_.jpg'));
+			$image = Image::make($request->home_)->resize(1900,1080)->encode('jpg',100)->save(storage_path('app/images/h_.jpg'), 100);
 		}
 
 		Session::flash("message", "Guardado");

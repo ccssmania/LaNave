@@ -22,6 +22,12 @@ Route::get('/about', 'HomeController@about');
 Route::get('/services', 'HomeController@services');
 Route::get('/contact', 'HomeController@contact');
 
+
+//event for fullcalendar
+Route::get('/events', 'CalendarController@events');
+
+
+
 //product Routes
 
 Route::get('/products', 'ProductController@index');
@@ -50,7 +56,7 @@ Route::post('/contactus','ContactUsController@message');
 //calendar routes
 
 Route::get('/calendar', 'HomeController@google');
-
+Route::resource('tasks', 'TasksController');
 
 //path to find image
 Route::get('products/images/{filename}',function($filename){

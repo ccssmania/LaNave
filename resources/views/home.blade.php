@@ -7,7 +7,12 @@
     @if (Auth::guest())
     @include('public.home')
     @else
-        @php  redirect('/user');@endphp
+
+        <script>
+	// your "Imaginary javascript"
+	 window.location.href = '{{url("/tasks")}}';
+	</script>
+        
     @endif
 </div>
 @endsection
