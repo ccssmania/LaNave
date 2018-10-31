@@ -21,12 +21,17 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-4 control-label">Fecha</label>
+						<label class="col-md-4 control-label">Fecha Inicio</label>
 						<div class="col-md-6">
-							<input class="form-control date" type="text" name="date" placeholder="{{$task->date ? $task->date : ''}}" {{$task->date ? '' : 'required'}}>
+							<input class="form-control dateStart" id="date" type="text" name="date" placeholder="{{$task->date ? $task->date : ''}}" {{$task->date ? '' : 'required'}}>
 						</div>
 					</div>
-					
+					<div class="form-group">
+						<label class="col-md-4 control-label">Fecha finalización</label>
+						<div class="col-md-6">
+							<input disabled class="form-control dateEnd" id="date1" type="text" name="end" placeholder="{{$task->end ? $task->end : ''}}" {{$task->end ? '' : 'required'}}>
+						</div>
+					</div>
 					<div class="form-group big-margin-bot">
 
 						<div class="col-md-6 text-right ">
