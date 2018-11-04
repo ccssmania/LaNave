@@ -18,7 +18,7 @@
 	</script>
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/basic/jquery.qtip.min.js"></script>
 	<script type="text/javascript" src="{{url('/js/bootstrap-datetimepicker.min.js')}}"></script>
 	<!-- Bootstrap 3.3.7 -->
 

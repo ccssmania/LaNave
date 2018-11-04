@@ -11,4 +11,14 @@ class CalendarController extends Controller
 
     	return json_encode($tasks);
     }
+
+    public function changeDate(Request $request){
+    	$task = Task::find($request->id);
+    	$task->date = $request->date;
+    	$task->end = $request->end;
+    	if($task->save()){
+    		
+    		return redirect('/task');
+    	}
+    }
 }

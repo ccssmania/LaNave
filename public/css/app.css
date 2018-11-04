@@ -3,14 +3,36 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-footer {
-  clear: both;
-  position: relative;
-  margin-bottom: 0 !important;
+html, body {
+  height: 100%;
+  box-sizing: border-box;
 }
 
-html, body {
-  min-height: 100vh !important;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  min-height: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.container {
+  min-height: 100%;
+}
+
+.footer {
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
 }
 
 #app {
@@ -38,6 +60,10 @@ html, body {
 
 .bordered-left {
   border-left: solid 2px #fff;
+}
+
+.little-margin-top {
+  margin-top: 30px;
 }
 
 /*# sourceMappingURL=app.css.map */

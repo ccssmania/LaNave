@@ -56,12 +56,12 @@
 	<p class="alert {{ Session::get('alert-class', 'alert-danger') }}">{{ Session::get('errorMessage') }}</p>
 	@endif
 	@yield('content')
-	<footer  class="main-footer py-5 bg-dark ">
+	<div  class="footer main-footer py-5 bg-dark ">
 		<div class="container">
 			<p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
 		</div>
 			<!-- /.container -->
-	</footer>
+	</div>
 	@include('partials.jsfiles_home')
 </body>
 

@@ -21,9 +21,6 @@
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Ingresar</a></li>
                         @else
-
-                                        
-                                        
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     Notifications <span > <i data-count="{{$unread}}" class="glyphicon glyphicon-bell notification-icon"></i> </span><span class="caret"> </span>
@@ -50,7 +47,7 @@
                                         @endforeach
                                     @endif
                                     <li class="divider"></li>
-                                    <li class="dropdown-header"><a href="#">View all</a></li>
+                                    <li class="dropdown-header"><a href="{{url('/notifications')}}">View all</a></li>
                                 </ul>
                             </li>
                             

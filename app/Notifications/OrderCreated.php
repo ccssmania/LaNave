@@ -6,8 +6,8 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-
-class ContactUs extends Notification
+use App\Product;
+class OrderCreated extends Notification
 {
     use Queueable;
 
@@ -18,9 +18,11 @@ class ContactUs extends Notification
      */
 
     private $data;
-    public function __construct($data)
+    private $product;
+    public function __construct($in)
     {
-        $this->data = $data;
+        $this->data = $in;
+        $this->product = Product::find($in->product_id);
     }
 
     /**
@@ -43,10 +45,14 @@ class ContactUs extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject("Alguien nos quiere contactar")
-                    ->line("Nombre: ".$this->data->name)->line("Mensaje: ".$this->data->message)->line("Email: ".$this->data->email)->line("Numero Telefonico: ".$this->data->number)
-                    //->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->subject("Alguien Ordenó una cita")
+                    ->line('Hola soy: '.$this->data->name)
+                    ->line('Quiero hacer: '.$this->product->name)
+                    ->line('A mi coche: '.$this->data->car_model)
+                    ->line('Mi número: '.$this->data->number)
+                    ->line('Mi correo: '. $this->data->email)
+                    ->action('Notificaciones', url('/notifications'))
+                    ->line('Gracias!');
     }
 
     /**
@@ -58,15 +64,9 @@ class ContactUs extends Notification
     public function toArray($notifiable)
     {
         return [
-            'type' => 'contactus',
-            'name' => 'Alguien nos contacta',
-            'data' => [
-
-                'email'  => $this->data->email,
-                'number' => $this->data->number,
-                'name'  => $this->data->name,
-                'message' => $this->data->message,
-            ],
+            'type' => 'order_request',
+            'name' => 'Nueva petición de cita',
+            'in_order' => $this->data,
         ];
     }
 }

@@ -57,6 +57,20 @@ Route::post('/contactus','ContactUsController@message');
 
 Route::get('/calendar', 'HomeController@google');
 Route::resource('tasks', 'TasksController');
+Route::post('/calendar/changeSize', 'CalendarController@changeSize');
+Route::post('/calendar/changeDate', 'CalendarController@changeDate');
+
+//orders
+
+Route::get('/order/{id}', 'OrderController@order');
+
+
+//notifications
+
+Route::get('/notifications', 'NotificationController@index');
+Route::get('/notifications/{id}', 'NotificationController@show');
+Route::get('/notifications/{id}/mark', 'NotificationController@mark');
+
 
 //path to find image
 Route::get('products/images/{filename}',function($filename){

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    protected $fillable = ['name', 'description', 'task_date'];
+    protected $fillable = ['title', 'description', 'date','end'];
 
     protected $appends = ['url'];
 

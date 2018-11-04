@@ -23,7 +23,9 @@
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css"/>
     <link rel="stylesheet" href="{{url('css/bootstrap-datetimepicker.min.css')}}" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/basic/jquery.qtip.min.css">
     <link rel="stylesheet" type="text/css" href="{{url('css/app.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('css/bootstrap-notifications.min.css')}}">
     <link rel="stylesheet" href="{{url('dist/css/MaterialAdminLTE.min.css')}}">
 
       <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
