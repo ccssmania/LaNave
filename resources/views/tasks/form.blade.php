@@ -3,7 +3,10 @@
 		<div class="col-md-10 big-margin-bot little-margin-left">
 			<div class="panel" >
 				<div class="panel-heading text-black" style="background-color: #64b5f6;">Tarea</div>
-				<form class="form-horizontal big-margin-top" method="{{$method}}" action="{{$url}}" enctype="multipart/form-data">
+				@if(isset($task->title))
+				@include('tasks.delete')
+				@endif
+				<form class="form-horizontal big-margin-top" method="{{$method}}" action="{{$url}}">
 					{{ csrf_field() }}
 					
 					<div class="form-group ">
@@ -23,13 +26,13 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label">Fecha Inicio</label>
 						<div class="col-md-6">
-							<input class="form-control dateStart" id="date" type="text" name="date" placeholder="{{$task->date ? $task->date : ''}}" {{$task->date ? '' : 'required'}}>
+							<input class="form-control dateStart" id="date" type="text" name="date" placeholder="{{$task->date ? $task->date : ''}}" value="{{$task->date ? $task->date : ''}}" {{$task->date ? '' : 'required'}}>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-4 control-label">Fecha finalización</label>
 						<div class="col-md-6">
-							<input disabled class="form-control dateEnd" id="date1" type="text" name="end" placeholder="{{$task->end ? $task->end : ''}}" {{$task->end ? '' : 'required'}}>
+							<input disabled class="form-control dateEnd" id="date1" type="text" name="end" placeholder="{{$task->end ? $task->end : ''}}" value="{{$task->end ? $task->end : ''}}" {{$task->end ? '' : 'required'}}>
 						</div>
 					</div>
 					<div class="form-group big-margin-bot">

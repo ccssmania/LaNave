@@ -5,7 +5,7 @@
 	</div>
 	<div class="container">
 		<table class="table table-bordered">
-			<thead class="elegant-color">
+			<thead class="elegant-color" style="background-color: #32383e; color: white;">
 				<tr>
 					<td>ID</td>
 					<td>Titulo</td>

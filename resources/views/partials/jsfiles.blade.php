@@ -24,4 +24,5 @@
 
 	<!-- AdminLTE App -->
 	<script src="{{url('js/app.js')}}"></script>
+	<script src="{{url('js/order.js')}}"></script>
 	<script src="{{url('/dist/js/adminlte.min.js')}}"></script>

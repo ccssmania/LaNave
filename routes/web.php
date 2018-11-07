@@ -57,19 +57,28 @@ Route::post('/contactus','ContactUsController@message');
 
 Route::get('/calendar', 'HomeController@google');
 Route::resource('tasks', 'TasksController');
+Route::post('/tasks/{id}/update', 'TasksController@update');
 Route::post('/calendar/changeSize', 'CalendarController@changeSize');
 Route::post('/calendar/changeDate', 'CalendarController@changeDate');
+Route::post('/task/{id}/delete','TasksController@destroy');
 
 //orders
 
 Route::get('/order/{id}', 'OrderController@order');
+Route::post('/order', 'OrderController@store');
+Route::get('/order/{id}/delete','OrderController@reject');
 
+
+//cancel order From Client
+Route::get('/order/userCancel/{id}/{token}','HomeController@cancelOrder');
 
 //notifications
 
 Route::get('/notifications', 'NotificationController@index');
 Route::get('/notifications/{id}', 'NotificationController@show');
 Route::get('/notifications/{id}/mark', 'NotificationController@mark');
+Route::get('/notifications/{id}/order', 'NotificationController@order');
+Route::get('/notifications/{id}/contactus', 'NotificationController@contact');
 
 
 //path to find image

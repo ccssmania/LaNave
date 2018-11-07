@@ -5,7 +5,7 @@
 	</div>
 	<div class="container">
 		<table class="table table-bordered">
-			<thead class="bg-dark">
+			<thead  style="background-color: #32383e; color: white;">
 				<tr>
 					<td>Titulo</td>
 					<td>Descripcion</td>
@@ -24,10 +24,10 @@
 						 $n->data['data']['number']
 						  !!}</td>
 					<td >
-						<a href="{{$n->data['type'] == 'order_request' ? url("/n/$n->id") : ''}}">Ver</a>
+						<a href="{{$n->data['type'] == 'order_request' ? url("/notifications/$n->id/order") : url("/notifications/$n->id/contactus")}}">{{$n->data['type'] == 'order_request' ? 'Agendar' : 'Responder'}}</a>
 						@if(!isset($n->read_at))
 						<br>
-						<a href="{{url('/notifications/'.$n->id.'/mark')}}" onclick="{{$n->markAsRead()}}">Marcar como leido</a>
+						<a href="{{url('/notifications/'.$n->id.'/mark')}}" >Marcar como leido</a>
 						@endif
 					</td>
 					@endforeach

@@ -38,6 +38,9 @@
                 <li class="{{get_class(Route::getCurrentRoute()->getController()) == "App\Http\Controllers\PerfilController" ? 'active' : ''}}">
                     <a href="{{url('/perfil')}}"><i class="fa fa-user"></i><span>Perfil</span></a>
                 </li>
+                <li class="{{get_class(Route::getCurrentRoute()->getController()) == "App\Http\Controllers\NotificationController" ? 'active' : ''}}">
+                    <a href="{{url('/notifications')}}"><i class="fa fa-bell"></i><span>Notificaciones</span></a>
+                </li>
                     <!--<li class="treeview">
                         <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
                             <span class="pull-right-container">

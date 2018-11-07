@@ -7,6 +7,10 @@ use App\Product;
 use App\Contact;
 use App\Employe;
 use App\Http\Services\Google;
+use App\Order;
+use App\User;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\OrderCanceledFromClient;
 class HomeController extends Controller
 {
     /**
@@ -55,5 +59,26 @@ class HomeController extends Controller
     public function showProduct($id){
         $product = Product::find($id);
         return view('product.show', compact("product"));
+    }
+
+    public function cancelOrder($id,$token){
+        $order = Order::find($id);
+
+        if($order->order_cancel == $token){
+            $order->status = 2; //order canceled by client
+            if($order->save()){
+                $task = $order->task;
+                $task->delete();
+                Notification::send(User::all(), new OrderCanceledFromClient($order->in_order));
+                \Session::flash("message", "Cita Eliminada, lo esperamos pronto en ".env("APP_NAME"));
+                return redirect("/");
+            }else{
+                \Session::flash("errorMessage", "Algo salió mal.");
+                return redirect("/");
+            }
+        }else{
+            \Session::flash("errorMessage", "El Token no corresponde!.");
+            return redirect("/");
+        }
     }
 }

@@ -1,8 +1,8 @@
 <div class="container little-margin-top">
 	<div class="row justify-content-center">
 		<div class="col-md-8">
-			<div class="card">
-				<div class="card-header">{{$product->name}}</div>
+			<div class="card big-margin-bot" >
+				<div class="card-header" style="background-color: #32383e; color: white;">{{$product->name}}</div>
 
 				<div class="card-body">
 					<div class="row">
