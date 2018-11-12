@@ -11,7 +11,8 @@
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/ripples.min.js"></script>	
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js'></script>
+	<script src="{{url('fullcalendar/fullcalendar.js')}}"></script>
+	<script src="{{url('fullcalendar/es.js')}}"></script>
 
 	<script>
 		$.material.init();

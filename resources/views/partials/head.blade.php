@@ -27,6 +27,7 @@
     <link rel="stylesheet" type="text/css" href="{{url('css/app.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url('css/bootstrap-notifications.min.css')}}">
     <link rel="stylesheet" href="{{url('dist/css/MaterialAdminLTE.min.css')}}">
+    <link rel='stylesheet' href="{{url('/fullcalendar/fullcalendar.min.css')}}" />
 
       <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
             page. However, you can choose any other skin. Make sure you

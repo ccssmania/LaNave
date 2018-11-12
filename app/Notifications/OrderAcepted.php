@@ -48,11 +48,11 @@ class OrderAcepted extends Notification
     {
         return (new MailMessage)
                 ->subject('Cita Aceptada Para : '. $this->in_order->product->name)
-                ->greeting('Apreciado '. $this->in_order->name)
+                ->greeting('Apreciado (a) '. $this->in_order->name)
                 ->line('Le informamos que su cita para: '.$this->in_order->product->name .' ha sido programada para el dia : ')
                 ->line('Fecha : ' . $this->task->date)
                 ->action('Cancelar Orden', url('/order/userCancel/'.$this->order->id.'/'.$this->order->order_cancel))
-                ->line('Gracias usar nuestra pagina, esperamos verlo pronto!');
+                ->line('Gracias por usar nuestra aplicación, esperamos verlo pronto!');
     }
 
     /**

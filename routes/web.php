@@ -67,6 +67,7 @@ Route::post('/task/{id}/delete','TasksController@destroy');
 Route::get('/order/{id}', 'OrderController@order');
 Route::post('/order', 'OrderController@store');
 Route::get('/order/{id}/delete','OrderController@reject');
+Route::get('/orders','OrderController@index');
 
 
 //cancel order From Client
@@ -79,7 +80,8 @@ Route::get('/notifications/{id}', 'NotificationController@show');
 Route::get('/notifications/{id}/mark', 'NotificationController@mark');
 Route::get('/notifications/{id}/order', 'NotificationController@order');
 Route::get('/notifications/{id}/contactus', 'NotificationController@contact');
-
+Route::post('/notifications/response/{id}', 'NotificationController@message');
+Route::get('/notifications/delete/{id}', 'NotificationController@delete');
 
 //path to find image
 Route::get('products/images/{filename}',function($filename){
@@ -107,5 +109,26 @@ Route::get('/images/{filename}',function($filename){
 	$response = Response::make($file,200);
 	$response->header("Content-Type", $type);
 
+	return $response;
+});
+
+//Access to storage js files
+Route::get('/fullcalendar/{filename}',function($filename){
+	if($filename == "es.js"){
+		$path = storage_path("app/fullcalendar/locale/$filename");
+	}
+	else{
+		$path = storage_path("app/fullcalendar/$filename");
+	}
+
+	if(!\File::exists($path)) abort(404);
+	$file = \File::get($path);
+	$type = \File::mimeType($path);
+
+	$response = Response::make($file,200);
+	if($filename == "fullcalendar.min.css")
+		$response->header("Content-Type", 'text/css');
+	else
+		$response->header("Content-Type", $type);
 	return $response;
 });

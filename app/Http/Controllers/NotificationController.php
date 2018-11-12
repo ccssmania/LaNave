@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Tasks;
+
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\SendMessage;
+
+
 class NotificationController extends Controller
 {
 
@@ -31,5 +36,30 @@ class NotificationController extends Controller
         $in_order = (object)$notification->data['in_order'];
         $product = Product::find($in_order->product_id);
         return view('notifications.order', compact('notification','in_order','product'));
+    }
+
+    public function contact($id){
+        $user = \Auth::user();
+        $notification = $user->notifications()->where('id',$id)->first();
+        $data = (object)$notification->data["data"];
+        return view('notifications.response',compact("notification","data"));
+    }
+
+    public function message(Request $request, $id){
+        $user = \Auth::user();
+        $notification = $user->notifications()->where('id',$id)->first();
+        Notification::route('mail', $request->email)
+                    ->notify(new SendMessage($request));
+
+        $notification->delete();
+        \Session::flash("message", "Mensaje Enviado");
+        return redirect("/notifications");
+    }
+
+    public function delete($id){
+        $user = \Auth::user();
+        $notification = $user->notifications()->where('id',$id)->first()->delete();
+        \Session::flash("message", "Notificación eliminada");
+        return redirect("/notifications");
     }
 }

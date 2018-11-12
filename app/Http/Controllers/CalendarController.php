@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\Notification;
 use App\Notifications\OrderChangedFromUser;
 class CalendarController extends Controller
 {
-    public function events(){
-    	$tasks = Task::all();
+    public function events(Request $request){
+        $from = $request->start;
+        $to = $request->end;
+    	$tasks = Task::whereBetween('date', [$from, $to])->get();
 
     	return json_encode($tasks);
     }

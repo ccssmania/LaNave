@@ -136,7 +136,7 @@ class TasksController extends Controller
             $product = $in_order->product;
             Notification::route('mail', $in_order->email)
                     ->notify(new OrderCanceledFromUser($in_order,$product));
-            $order->status = 1; //status 1 = cancelada Por el usuario
+            $order->status = env("ORDER_STATUS_CANCELED_FROM_USER"); //status 1 = cancelada Por el usuario
             if($order->save()){
                 $task->delete();
                 \Session::flash("message", "Tarea Cancelada Exitosamente");

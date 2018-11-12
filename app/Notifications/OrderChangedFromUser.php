@@ -48,11 +48,11 @@ class OrderChangedFromUser extends Notification
         return (new MailMessage)
                     ->error()
                     ->subject('Cita De '. $this->in_order->product->name.' Cambiada')
-                    ->greeting('Apreciado '. $this->in_order->name)
+                    ->greeting('Apreciado (a) '. $this->in_order->name)
                     ->line('Le informamos que su cita para: '.$this->in_order->product->name .' ha sido cambiada para el dia : ')
                     ->line('Fecha : ' . $this->task->date)
                     ->action('Cancelar Orden', url('/order/userCancel/'.$this->order->id.'/'.$this->order->order_cancel))
-                    ->line('Gracias usar nuestra pagina, esperamos verlo pronto!');
+                    ->line('Gracias por usar nuestra aplicación, esperamos verlo pronto!');
     }
 
     /**

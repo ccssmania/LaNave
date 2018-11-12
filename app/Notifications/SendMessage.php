@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class OrderCanceledFromUser extends Notification
+class SendMessage extends Notification
 {
     use Queueable;
 
@@ -17,11 +17,9 @@ class OrderCanceledFromUser extends Notification
      * @return void
      */
     private $data;
-    private $product;
-    public function __construct($in, $p)
+    public function __construct($data)
     {
-        $this->data = $in;
-        $this->product = $p;
+        $this->data = $data;
     }
 
     /**
@@ -44,12 +42,11 @@ class OrderCanceledFromUser extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                ->error()
-                ->subject('Cita Cancelada')
-                ->greeting('Apreciado (a) '. $this->data->name)
-                ->line('Lamentamos informarle que su cita para: '.$this->product->name .' ha sido cancelada')
-                ->action('Contactenos', url('/contact'))
-                ->line('Gracias por usar nuestra aplicación, esperamos verlo pronto!');
+                    ->subject($this->data->subject)
+                    ->greeting('Apreciado (a) '. $this->data->name)
+                    ->line($this->data->message)
+                    ->action('Visita Nuestra Página', url('/'))
+                    ->line('Gracias por usar nuestra aplicación, esperamos verlo pronto!');
     }
 
     /**
@@ -61,9 +58,7 @@ class OrderCanceledFromUser extends Notification
     public function toArray($notifiable)
     {
         return [
-            "type" => "order_canceled",
-            "name" => "Orden Cancelada",
-            "in_order" => $data->id,
+            //
         ];
     }
 }

@@ -43,10 +43,10 @@ class ContactUs extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+                    ->greeting('Hola! :')
                     ->subject("Alguien nos quiere contactar")
-                    ->line("Nombre: ".$this->data->name)->line("Mensaje: ".$this->data->message)->line("Email: ".$this->data->email)->line("Numero Telefonico: ".$this->data->number)
-                    //->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->line("Nombre: <strong>".$this->data->name."</strong>")->line("Mensaje: <strong>".$this->data->message."</strong>")->line("Email: ".$this->data->email)->line("Numero Telefonico: <strong>".$this->data->number . "</strong>")
+                    ->action('Ir a notificaciones', url('/notifications'));
     }
 
     /**

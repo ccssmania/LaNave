@@ -46,13 +46,13 @@ class OrderCreated extends Notification
     {
         return (new MailMessage)
                     ->subject("Alguien Ordenó una cita")
-                    ->line('Hola soy: '.$this->data->name)
-                    ->line('Quiero hacer: '.$this->product->name)
-                    ->line('A mi coche: '.$this->data->car_model)
-                    ->line('Mi número: '.$this->data->number)
-                    ->line('Mi correo: '. $this->data->email)
-                    ->action('Notificaciones', url('/notifications'))
-                    ->line('Gracias!');
+                    ->greeting('Hola! alguien esta pidiendo una cita')
+                    ->line('Hola soy: <strong>'.$this->data->name. "</strong>")
+                    ->line('Quiero hacer: <strong>'.$this->product->name. "</strong>")
+                    ->line('A mi coche: <strong>'.$this->data->car_model. "</strong>")
+                    ->line('Mi número: <strong>'.$this->data->number. "</strong>")
+                    ->line('Mi correo: <a href="mailto:'. $this->data->email.'">'.$this->data->email.'</a>')
+                    ->action('Notificaciones', url('/notifications'));
     }
 
     /**

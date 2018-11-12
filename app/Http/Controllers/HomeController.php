@@ -65,7 +65,7 @@ class HomeController extends Controller
         $order = Order::find($id);
 
         if($order->order_cancel == $token){
-            $order->status = 2; //order canceled by client
+            $order->status = env("ORDER_STATUS_CANCELED_FROM_CLIENT"); //order canceled by client
             if($order->save()){
                 $task = $order->task;
                 $task->delete();

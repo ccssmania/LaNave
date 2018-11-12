@@ -1,6 +1,5 @@
 @extends('layouts.main')
 @section('title','Crear o  rechazar orden')
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css' />
 @section('content')
 <div class="content">
 	<h2> Especificaciones de la orden</h2>

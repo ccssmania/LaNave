@@ -1,7 +1,5 @@
 $(document).ready(function(){
 	$('#calendar_order').fullCalendar({
-			locale: 'es',
-			lang: 'es',
 			selectable : true,
 			select: function(start, end, allDay,view) {
 				if(view.name == 'agendaDay'){

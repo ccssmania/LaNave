@@ -10,12 +10,18 @@ $(document).ready(function(){
 			minDate: $('.dateStart').val(),
 		});
 	});
+	$('.dateFilter').datetimepicker({format: 'YYYY-MM-DD h:mm',
+	});
+	$('.dateFilter').click(function(){
+		$('.dateEnd').prop('disabled', false);
+		$('.dateEnd').datetimepicker({format: 'YYYY-MM-DD h:mm',
+			minDate: $('.dateFilter').val(),
+		});
+	});
 	$('.dateEnd').click(function(){
 		update();
 	});
 	$('#calendar').fullCalendar({
-		locale: 'es',
-		lang: 'es',
 		editable: true,
 
 		header: { center: 'month,agendaWeek,agendaDay' },
@@ -38,7 +44,25 @@ $(document).ready(function(){
 			}
 		},
 
-		events : '/events',
+		events: function(start, end, timezone, callback) {
+		    _start=moment(start).format('YYYY-MM-DD H:mm:ss');
+			_end=moment(end).format('YYYY-MM-DD H:mm:ss');
+		    $.ajax({
+		      url: '/events',
+		      data: {
+		        // our hypothetical feed requires UNIX timestamps
+		        start: _start,
+		        end: _end
+		      },
+		      success: function(doc) {
+		        var events = JSON.parse(doc);
+		        
+		        callback(events);
+		      },
+
+		    });
+		},
+		
 		eventRender: function(event, element) {
 			element.qtip({
 				content: event.description,

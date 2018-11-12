@@ -10,12 +10,19 @@ use App\Notifications\OrderCreated;
 use App\Notifications\OrderAcepted;
 use App\Order;
 use App\Task;
+use App\Http\Models\OrderModel;
 class OrderController extends Controller
 {
 	public function __construct(){
 		$this->middleware("auth", ["except" => ['order']]);
 	}
 
+
+    public function index(Request $request){
+        $orders = OrderModel::getOrders($request->status,$request->start,$request->end);
+        dd($orders);
+        return view('orders.index', compact("orders", 'request'));
+    }
 	public function order(Request $request, $id){
 		$in = new In_order($request->all());
 		$in->product_id = $id;
@@ -38,7 +45,7 @@ class OrderController extends Controller
 		if($task->save()){
 			$order = new Order();
 			$order->in_order_id = $request->in_order_id;
-        	$order->status = 0; // Status 0 = activo
+        	$order->status = env("ORDER_STATUS_CREATED"); // Status 0 = activo
         	$token = bin2hex(random_bytes(50));
         	$order->order_cancel = $token;
         	if($order->save()){

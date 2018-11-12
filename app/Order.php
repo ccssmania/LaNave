@@ -16,4 +16,6 @@ class Order extends Model
     public function task(){
     	return $this->hasOne('App\Task');
     }
+
+    
 }
