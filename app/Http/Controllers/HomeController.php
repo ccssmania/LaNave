@@ -39,7 +39,8 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::where('status', 0)->paginate(15);
-        return view('home', compact('products'));
+        $contact = Contact::find(1);
+        return view('home', compact('products', 'contact'));
     }
     public function about(){
         $employees = Employe::all();
@@ -68,7 +69,8 @@ class HomeController extends Controller
             $order->status = env("ORDER_STATUS_CANCELED_FROM_CLIENT"); //order canceled by client
             if($order->save()){
                 $task = $order->task;
-                $task->delete();
+                $task->status = 1;
+                $task->save();
                 Notification::send(User::all(), new OrderCanceledFromClient($order->in_order));
                 \Session::flash("message", "Cita Eliminada, lo esperamos pronto en ".env("APP_NAME"));
                 return redirect("/");

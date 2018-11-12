@@ -10,7 +10,7 @@
 							<label class="col-md-4">Tipo de orden</label>
 							<div class="col-md-8">
 								<select class="form-control" name="status">
-									<option value="" >Todas</option>
+									<option value="{{env('ORDER_STATUS_CREATED')}}" {{$request->status == env('ORDER_STATUS_CREATED') ? 'selected' : ''}} >Ordenes En Estado Normal</option>
 									<option value="{{env('ORDER_STATUS_CANCELED_FROM_USER')}}" {{$request->status == env('ORDER_STATUS_CANCELED_FROM_USER') ? 'selected' : ''}}>Ordenes canceladas por nosotros</option>
 									<option value="{{env('ORDER_STATUS_CANCELED_FROM_CLIENT')}}" {{$request->status == env('ORDER_STATUS_CANCELED_FROM_CLIENT') ? 'selected' : ''}}>Ordenes canceladas por el cliente</option>
 									<option value="{{env('ORDER_STATUS_PASSED')}}" {{$request->status == env('ORDER_STATUS_PASSED') ? 'selected' : ''}}>Ordenes que ya psaron las fechas</option>
@@ -20,10 +20,10 @@
 						<div class="col-md-9 big-margin-bot">
 							<label class="col-md-4">Fechas</label>
 							<div class="col-md-3">
-								<input type="text" class="dateFilter form-control" name="start" placeholder="inicio" {{$request->start ?  'value="$request->start"' : ''}}>
+								<input type="text" class="dateFilter form-control" name="start" placeholder="{{$request->start ? $request->start : 'inicio'}}" >
 							</div>
 							<div class="col-md-3">
-								<input type="text" class="dateEnd form-control" name="end" placeholder="final" {{$request->start ?  'value="$request->end"' : ''}}>
+								<input type="text" class="dateEnd form-control" name="end" placeholder="{{$request->end ? $request->end : 'final'}}">
 							</div>
 							<div class="col-md-2">
 								<input type="submit" name="" class="btn btn-info" value="Filtrar">

@@ -49,6 +49,7 @@ Route::get('/perfil/employe/edit/{id}', 'PerfilController@editEmploye');
 Route::post('/perfil/employe/edit/{id}', 'PerfilController@updateEmploye');
 Route::get('/perfil/contact/edit/{id}', 'PerfilController@editContact');
 Route::post('/perfil/contact/edit/{id}', 'PerfilController@updateContact');
+Route::get('/perfil/employe/delete/{id}', 'PerfilController@deleteEmploye');
 
 //mensaje de contacto
 Route::post('/contactus','ContactUsController@message');

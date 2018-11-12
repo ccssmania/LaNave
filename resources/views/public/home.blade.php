@@ -10,21 +10,18 @@
 			<div class="carousel-item active" style="background-image: url('{{url('/images/banner_1.jpg')}}')">
 				<div class="carousel-caption d-none d-md-block">
 					<h3>{{config('app.name')}}</h3>
-					<p>This is a description for the first slide.</p>
 				</div>
 			</div>
 			<!-- Slide Two - Set the background image for this slide in the line below -->
 			<div class="carousel-item" style="background-image: url('{{url('/images/banner_2.jpg')}}')">
 				<div class="carousel-caption d-none d-md-block">
 					<h3>{{config('app.name')}}</h3>
-					<p>This is a description for the second slide.</p>
 				</div>
 			</div>
 			<!-- Slide Three - Set the background image for this slide in the line below -->
 			<div class="carousel-item" style="background-image: url('{{url('/images/banner_3.jpg')}}')">
 				<div class="carousel-caption d-none d-md-block">
 					<h3>{{config('app.name')}}</h3>
-					<p>This is a description for the third slide.</p>
 				</div>
 			</div>
 		</div>
@@ -64,18 +61,8 @@
 	<!-- Features Section -->
 	<div class="row">
 		<div class="col-lg-6">
-			<h2>Modern Business Features</h2>
-			<p>The Modern Business template by Start Bootstrap includes:</p>
-			<ul>
-				<li>
-					<strong>Bootstrap v4</strong>
-				</li>
-				<li>jQuery</li>
-				<li>Font Awesome</li>
-				<li>Working contact form with validation</li>
-				<li>Unstyled page elements for easy customization</li>
-			</ul>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
+			<h2>Características de LaNave</h2>
+			{!!$contact->details!!}
 		</div>
 		<div class="col-lg-6">
 			<img class="img-fluid rounded" src="{{url('/images/h_.jpg')}}" alt="">

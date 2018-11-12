@@ -35,7 +35,7 @@
                 	</div>
                 	<div class="col-md-6 text-left">
                 		<a href="{{url('/perfil/employe/edit/'.$emp->id)}}"><i class="fa fa-edit"></i></a>
-                		<a href="{{url('/perfil/employe/delete/'.$emp->id)}}"><i class="fa fa-delete"></i></a>
+                		<a href="#" class="deleteE" name="{{$emp->id}}"><i class="fa fa-trash"></i></a>
                 	</div>
                 </th>
             </tr>

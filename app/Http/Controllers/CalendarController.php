@@ -11,7 +11,7 @@ class CalendarController extends Controller
     public function events(Request $request){
         $from = $request->start;
         $to = $request->end;
-    	$tasks = Task::whereBetween('date', [$from, $to])->get();
+    	$tasks = Task::where("status",0)->whereBetween('date', [$from, $to])->get();
 
     	return json_encode($tasks);
     }

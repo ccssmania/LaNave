@@ -128,6 +128,16 @@ class PerfilController extends Controller
 		}
 	}
 
+	//delete Employe
+
+	public function deleteEmploye($id){
+		$employe = Employe::find($id);
+		if($employe->delete()){
+			return redirect('/perfil');
+		}else
+			return false;
+	}
+
 	//contact edit
 	public function editContact($id){
 		$contact = Contact::find($id);
@@ -140,6 +150,7 @@ class PerfilController extends Controller
 		isset($request->email) ? $contact->email = $request->email : false;
 		isset($request->address) ? $contact->address = $request->address : false;
 		isset($request->number) ? $contact->number = $request->number : false;
+		isset($request->details) ? $contact->details = $request->details : false;
 		if($contact->save()){
 			Session::flash("message", "Actualizado");
 			return redirect("/perfil");
@@ -175,4 +186,5 @@ class PerfilController extends Controller
 		Session::flash("message", "Guardado");
 		return redirect("/perfil");
 	}
+
 }

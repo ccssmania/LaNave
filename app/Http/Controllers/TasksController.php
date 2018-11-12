@@ -138,7 +138,8 @@ class TasksController extends Controller
                     ->notify(new OrderCanceledFromUser($in_order,$product));
             $order->status = env("ORDER_STATUS_CANCELED_FROM_USER"); //status 1 = cancelada Por el usuario
             if($order->save()){
-                $task->delete();
+                $task->status = 1;
+                $task->save();
                 \Session::flash("message", "Tarea Cancelada Exitosamente");
                 return redirect("/tasks");
             }else{
@@ -146,12 +147,10 @@ class TasksController extends Controller
                 return redirect("/tasks");
             }
         }
-        if($task->delete()){
-            \Session::flash("message", "Tarea Cancelada Exitosamente");
-            return redirect("/tasks");
-        }else{
-            \Session::flash("errorMessage", "Algo Salió mal");
-            return redirect("/tasks");
-        }
+        $task->status = 1;
+        $task->save();
+        \Session::flash("message", "Tarea Cancelada Exitosamente");
+        return redirect("/tasks");
+        
     }
 }

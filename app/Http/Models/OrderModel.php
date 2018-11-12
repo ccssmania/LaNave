@@ -16,12 +16,12 @@ class OrderModel {
             $order->where("status", $status);
         }
         if (isset($end)) {
-            $order->whereHas('in_order_id',function($query) use ($start,$end){
-                $query->whereBetween('create_at', [$start, $end]);
-            });
+            $order->whereHas('task',function($query) use ($start,$end){
+                $query->whereBetween('date', [$start, $end]);
+            })->get();
         }elseif(isset($start)){
-            $order->whereHas('in_order_id',function($query) use ($start,$end){
-                $query->whereBetween('create_at', [$start, $today]);
+            $order->whereHas('task',function($query) use ($start,$end){
+                $query->whereBetween('date', [$start, $today]);
             });
         }
 

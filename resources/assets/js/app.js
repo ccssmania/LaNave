@@ -92,6 +92,11 @@ $(document).ready(function(){
 		},
 
 	});
+
+	$(".deleteE").click(function(){
+		deleteEmploye($(".deleteE").attr('name'));
+	});
+
 })
 
 
@@ -113,4 +118,20 @@ function changeDate(event){
 }
 function update(){
 	$('.dateEnd').data('DateTimePicker').minDate($('.dateStart').val());
+}
+
+function deleteEmploye(id){
+	if(confirm("Esta seguro de eliminarlo?")){
+		$.ajax({
+			url: '/perfil/employe/delete/'+id,
+			method: 'GET',
+			success: function(){
+				location.reload();
+			},
+			error: function(e){
+				console.log(e);
+			}
+		});
+		return false;
+	}
 }

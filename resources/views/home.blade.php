@@ -8,8 +8,7 @@
     @include('public.home')
     @else
 
-        <script>
-	// your "Imaginary javascript"
+    <script>
 	 window.location.href = '{{url("/tasks")}}';
 	</script>
         

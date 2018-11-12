@@ -21,6 +21,14 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label  class="col-md-4 control-label">Este es el campo de los detalles de la nave, ejemplo compromiso dedicacion, erramientas de trabajo etc. </label>
+
+						<div class="col-md-6">
+							<textarea class="textarea" name="details">{{$contact->details ? $contact->details : ''}} {{old('details') ? old('details') : ''}}</textarea>
+
+						</div>
+					</div>
+					<div class="form-group">
 						<label class="col-md-4 control-label">Direccion</label>
 						<div class="col-md-6">
 							<input class="form-control" type="text"  name="address" placeholder="{{$contact->address ? $contact->address : ''}}" {{$contact->address ? '' : 'required'}}>

@@ -20,7 +20,6 @@ class OrderController extends Controller
 
     public function index(Request $request){
         $orders = OrderModel::getOrders($request->status,$request->start,$request->end);
-        dd($orders);
         return view('orders.index', compact("orders", 'request'));
     }
 	public function order(Request $request, $id){
@@ -60,7 +59,8 @@ class OrderController extends Controller
         		\Session::flash("message", "Ordern Guardada");
         		return redirect('/notifications');
         	}else{
-        		$task->delete();
+        		$task->status = 1;
+                $task->save();
         		\Session::flash("errorMessage", "Algo salió mal");
         		return redirect('/notifications');
         	}
