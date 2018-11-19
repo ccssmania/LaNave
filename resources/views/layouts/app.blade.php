@@ -21,9 +21,9 @@
 					<li class="nav-item">
 						<a class="nav-link" href="{{url('/about')}}">Sobre Nosotros</a>
 					</li>
-					<li class="nav-item">
+					<!--<li class="nav-item">
 						<a class="nav-link" href="{{url('/services')}}">Servicios</a>
-					</li>
+					</li>-->
 					<li class="nav-item">
 						<a class="nav-link" href="{{url('/contact')}}">Contacto</a>
 					</li>
