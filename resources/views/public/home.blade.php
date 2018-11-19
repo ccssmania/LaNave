@@ -59,6 +59,7 @@
 	<!-- /.row -->
 
 	<!-- Features Section -->
+	@if($contact->details)
 	<div class="row">
 		<div class="col-lg-6">
 			<h2>Características de LaNave</h2>
@@ -68,6 +69,7 @@
 			<img class="img-fluid rounded" src="{{url('/images/h_.jpg')}}" alt="">
 		</div>
 	</div>
+	@endif
 	<!-- /.row -->
 
 	<hr>
