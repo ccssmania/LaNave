@@ -1,67 +1,91 @@
-<div class="">
-	<div class="row">
-		<div class="col-md-10 big-margin-bot little-margin-left">
-			<div class="panel" >
-				<div class="panel-heading text-black" style="background-color: #64b5f6;">Producto </div>
-				<form class="form-horizontal big-margin-top" method="{{$method}}" action="{{$url}}" enctype="multipart/form-data">
-					{{ csrf_field() }}
-					
-					<div class="form-group ">
-						<label class="col-md-4 control-label">Nombre </label>
-						<div class="col-md-6">
-							<input type="text" name="name"  placeholder="{{$product->name ? $product->name : 'Nombre'}}" class="form-control" {{$product->name ? '' : 'required'}}>
-						</div>
+<div class="tab-pane container">
+	<div class="tile user-settings">
+		<h4 class="line-head"></h4>
+		<form action="{{$url}}" method="{{$method}}" enctype="multipart/form-data">
+			@csrf
+			<div class="row mb-4">
+                <div class="input-group form-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text"><i class="fas fa-user"></i></span>
 					</div>
-					<div class="form-group">
-						<label  class="col-md-4 control-label">Description </label>
+					<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$product->name}}" required autocomplete="name" placeholder="Nombre" autofocus>
 
-						<div class="col-md-6">
-							<textarea class="textarea" name="description">{{$product->description ? $product->description : ''}} {{old('description') ? old('description') : ''}}</textarea>
+					@error('name')
+						<span class="invalid-feedback" role="alert">
+							<strong>{{ $message }}</strong>
+						</span>
+					@enderror
+				</div>
+				<div class="input-group form-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text"><i class="fas fa-heading"></i></span>
+					</div>
+					<input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{$product->title}}" placeholder="titulo o pequeña descripción del producto" >
 
+					@error('title')
+						<span class="invalid-feedback" role="alert">
+							<strong>{{ $message }}</strong>
+						</span>
+					@enderror
+				</div>
+				<div class="form-group form-check">
+				    <input type="checkbox" name="checkPrice" {{isset($product->price) ? 'checked' : ''}} class="form-check-input" id="price">
+				    <label class="form-check-label" >Producto con precio único</label>
+				</div>
+				<div class="form-group form-check "  style="margin-left: 15px;">
+				    <input type="checkbox" name="checkPrices" {{$product->prices()->count() > 0 ? 'checked' : '' }} class="form-check-input" id="prices">
+				    <label class="form-check-label">producto con categorías y diferentes precios</label>
+				</div>
+				<div class="price col-md-12 {{isset($product->price) ? '' : 'none'}}">
+					<div class="form-group input-group " >
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-money"></i></span>
 						</div>
+						<input type="number" name="price" class="form-control" value="{{$product->price}}"  placeholder="Precio único del producto">
 					</div>
-					<div class="form-group">
-						<label class="col-md-4 control-label">Precio</label>
-						<div class="col-md-6">
-							<input class="form-control" type="number" step="0.5" name="price" placeholder="{{$product->price ? $product->price : ''}}" {{$product->price ? '' : 'required'}}>
+				</div>
+				<div class=" prices col-md-12 {{$product->prices()->count() > 0 ? '' : 'none' }}" >
+					@foreach($product_categories as $category)
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-money"> {{$category->name}} </i></span>
+							</div>
+							<input type="number" name="prices[{{$category->id}}]" class="form-control" value="{{$product->prices()->where('product_id',$product->id)->where('product_category_id',$category->id)->first() !== null ? $product->prices()->where('product_id',$product->id)->where('product_category_id',$category->id)->first()->price : ''}}"  placeholder="Precio en esta categoria del producto">
 						</div>
+					@endforeach
+				</div>
+				<div class="input-group form-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text">
+							<label class="control-label">Descripción</label>
+						</span>
 					</div>
-					<div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}">
-						<label class="col-md-4 control-label">Imagen/Foto</label>
-						<div class="col-md-6">
-							<table class="table">
-								<tr>
-									<th height="70" width="200">
-										<img class="img-circle img-responsive img-center"  src="{{url('/images/medium/p_'.$product->id.'.jpg')}}" onerror="this.src='{{url("/images/medium/perfil.png")}}'">
-									</th>
-									<th>
-										<h3>cambiar</h3>
-										<input type="file" class="form-control" name="file">
-										@if ($errors->has('file'))
-										<span class="help-block">
-											<strong>{{ $errors->first('file') }}</strong>
-										</span>
-										@endif
-									</th>
-								</tr>
-
-								<tr><th></th><th></th></tr>
-							</table>
-						</div>
+					<textarea id="textarea" class=" @error('description') is-invalid @enderror" name="description" required  placeholder="Descripcion del producto" > {{ $product->description }} </textarea>
+					@error('description')
+						<span class="invalid-feedback" role="alert">
+							<strong>{{ $message }}</strong>
+						</span>
+					@enderror
+				</div>
+				<div class="input-group form-group">
+					<div class="input-group-prepend">
+						<span class="input-group-addon"><img class="img-circle img-responsive img-center image"  src="{{url('/images/small/product_'.$product->id.'.jpg')}}" onerror="this.src='{{url("/images/small/perfil.png")}}'"></span>
 					</div>
-					<div class="form-group big-margin-bot">
-
-						<div class="col-md-6 text-right ">
-							<input type="submit" value="Enviar" class="btn btn-success">
-						</div>
-						<div class="col-md-6 ">
-							<a href="{{url('/products')}}" class="btn btn-info">Atrás</a>
-						</div>
+					<input type="file" name="image" class="form-control @error('image') is-invalid @enderror" style="height: 90px">
+					@error('image')
+						<span class="invalid-feedback" role="alert">
+							<strong>{{ $message }}</strong>
+						</span>
+					@enderror
+				</div>
+				<div class="form-group row mb-12">
+					<div class="">
+						<button type="submit" class="btn btn-primary"><i class="fa fa-fw fa-lg fa-check-circle"></i>
+							Save
+						</button>
 					</div>
-					
-				</form>
+				</div>
 			</div>
-		</div>
+		</form>
 	</div>
 </div>
-

@@ -91,7 +91,7 @@ class PerfilController extends Controller
             Session::flash('message', 'Trabajador guardado');
             return redirect('/perfil');
     	}else{
-            Session::flash('errorMessage', 'Halgo salio mal');
+            Session::flash('errorMessage', 'Algo salio mal');
             return redirect('/perfil');
         }
 	}

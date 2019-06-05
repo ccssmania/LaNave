@@ -1,5 +1,8 @@
-@extends("layouts.main")
-@section("content")
+@extends('layouts.app')
+@section('title','Notificaciones')
+@section('description','Listado de Notificaciones')
+@section('font','bell')
+@section('content')
 	<div class="big-padding text-center blue-grey shite-text">
 		<h1>Notificaciones</h1>
 	</div>

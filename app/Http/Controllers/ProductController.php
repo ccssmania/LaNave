@@ -7,6 +7,8 @@ use App\Product;
 use Intervention\Image\ImageManagerStatic as Image;
 use Session;
 use Validator;
+use App\ProductCategory;
+use App\ProductCategoryPrice;
 class ProductController extends Controller
 {
 
@@ -15,65 +17,101 @@ class ProductController extends Controller
         $this->middleware('auth');
     }
     public function index(){
-    	$products = Product::where('status',0)->paginate(15);
+    	$products = Product::allActive();
     	return view('product.index',compact('products'));
     }
 
     public function create(){
     	$product = new Product;
-    	return view('product.create', compact('product'));
+        $product_categories = ProductCategory::allActive();
+    	return view('product.create', compact('product','product_categories'));
     }
 
     public function store(Request $request){
 
     	$product = new Product($request->all());
-    	$hasFile = $request->hasFile('file') && $request->file->isValid();
-        if(isset($request->file)){
+    	$hasFile = $request->hasFile('image') && $request->image->isValid();
+        if(isset($request->checkPrice)){
+            $product->price = $request->price;
+            if(isset($product->prices) and $product->prices()->count() >0){
+                foreach ($product->prices as $price) {
+                    $price->delete();
+                }
+            }
+        }
+        if(isset($request->image)){
             $this->validate($request,[
-                'file' => 'mimes:jpg,png,jpeg',
+                'image' => 'mimes:jpg,png,jpeg',
             ]);
             
         }
     	if($product->save()){
     		if($hasFile){
-                $image = Image::make($request->file)->resize(700,400)->encode('jpg')->save(storage_path('app/images/p_'.$product->id.'.jpg'));
-                Session::flash('message', 'Producto guardado');
-                return redirect('/products');
+                $image = Image::make($request->image)->encode('jpg')->save(storage_path('app/images/product_'.$product->id.'.jpg'));
     		}
+            if (isset($request->checkPrices)) {
+                foreach ($request->prices as $key => $price) {
+                    $product_category_price = new ProductCategoryPrice;
+                    $product_category_price->product_id = $product->id;
+                    $product_category_price->product_category_id = $key;
+                    $product_category_price->price = $price;
+                    $product_category_price->save();
+                }
+                if(isset($product->price)){
+                    $product->price = null;
+                    $product->save();
+                }
+            }
             Session::flash('message', 'Producto guardado');
             return redirect('/products');
     	}else{
-            Session::flash('errorMessage', 'Halgo salio mal');
+            Session::flash('errorMessage', 'Algo salio mal');
             return redirect('/products');
         }
     }
 
     public function edit($id){
         $product = Product::find($id);
-        return view('product.edit',compact('product'));
+        $product_categories = ProductCategory::allActive();
+        return view('product.edit',compact('product','product_categories'));
     }
     public function update(Request $request, $id){
         $product = Product::find($id);
-        $hasFile = $request->hasFile('file') && $request->file->isValid();
-        if(isset($request->file)){
+        $hasFile = $request->hasFile('image') && $request->image->isValid();
+        if(isset($request->checkPrice)){
+            $product->price = $request->price;
+            if(isset($product->prices) and $product->prices()->count() >0){
+                foreach ($product->prices as $price) {
+                    $price->delete();
+                }
+            }
+        }
+        if(isset($request->image)){
             $this->validate($request,[
-                'file' => 'mimes:jpg,png,jpeg',
+                'image' => 'mimes:jpg,png,jpeg',
             ]);
         }
-        isset($request->name) ? $product->name = $request->name : '';
-        isset($request->price) ? $product->price = $request->price : '';
-        isset($request->description) ? $product->description = $request->description : '';
-
-        if($product->save()){
+        if($product->update($request->all())){
             if($hasFile){
-                $image = Image::make($request->file)->resize(700,400)->encode('jpg')->save(storage_path('app/images/p_'.$product->id.'.jpg'));
-                Session::flash('message', 'Producto Editado');
-                return redirect('/products');
+                $image = Image::make($request->image)->encode('jpg')->save(storage_path('app/images/product_'.$product->id.'.jpg'));
+            }
+            if (isset($request->checkPrices)) {
+                foreach ($request->prices as $key => $price) {
+                    $product_category_price = new ProductCategoryPrice;
+                    $product_category_price->product_id = $product->id;
+                    $product_category_price->product_category_id = $key;
+                    $product_category_price->price = $price;
+                    $product_category_price->save();
+                }
+                if(isset($product->price)){
+                    $product->price = null;
+                    $product->save();
+                }
             }
             Session::flash('message', 'Producto Editado');
             return redirect('/products');
         }else{
-            Session::flash('errorMessage', 'Halgo salio mal');
+            Session::flash('errorMessage', 'Algo salio mal');
             return redirect('/products');
         }
         
@@ -86,7 +124,7 @@ class ProductController extends Controller
             Session::flash('message', 'Producto eliminado');
             return redirect('/products');
         }else{
-            Session::flash('errorMessage', 'Halgo salio mal');
+            Session::flash('errorMessage', 'Algo salio mal');
             return redirect('/products');
         }
     }

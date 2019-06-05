@@ -1,36 +1,41 @@
-@extends("layouts.main")
-@section("content")
-		<div class="col-md-9 offset-md-3">
-			<div class="panel" >
-				<div class="panel-heading " style="background-color: #32383e; color: white;">Filtro </div>
-				<form class="form-horizontal big-margin-top" method="GET" action="{{url('/orders')}}">
-					{{ csrf_field() }}
-					<div class="row">
-						<div class="col-md-9 big-margin-bot">
-							<label class="col-md-4">Tipo de orden</label>
-							<div class="col-md-8">
-								<select class="form-control" name="status">
-									<option value="{{env('ORDER_STATUS_CREATED')}}" {{$request->status == env('ORDER_STATUS_CREATED') ? 'selected' : ''}} >Ordenes En Estado Normal</option>
-									<option value="{{env('ORDER_STATUS_CANCELED_FROM_USER')}}" {{$request->status == env('ORDER_STATUS_CANCELED_FROM_USER') ? 'selected' : ''}}>Ordenes canceladas por nosotros</option>
-									<option value="{{env('ORDER_STATUS_CANCELED_FROM_CLIENT')}}" {{$request->status == env('ORDER_STATUS_CANCELED_FROM_CLIENT') ? 'selected' : ''}}>Ordenes canceladas por el cliente</option>
-									<option value="{{env('ORDER_STATUS_PASSED')}}" {{$request->status == env('ORDER_STATUS_PASSED') ? 'selected' : ''}}>Ordenes que ya psaron las fechas</option>
-								</select>
+@extends('layouts.app')
+@section('title','Ordenes')
+@section('description','Listado de Ordenes')
+@section('font','book')
+@section('content')
+		<div class="col-md-6 offset-md-3">
+			<div class="card" >
+				<div class="card-body">
+					<h2 class="card-title">Filtro</h2>
+					<form class="form-horizontal big-margin-top" method="GET" action="{{url('/orders')}}">
+						{{ csrf_field() }}
+						<div class="row ">
+							<div class="form-group row ">
+								<label class="col-md-4 col-form-label">Tipo de orden</label>
+								<div class="col-md-8">
+									<select class="form-control" name="status">
+										<option value="{{env('ORDER_STATUS_CREATED')}}" {{$request->status == env('ORDER_STATUS_CREATED') ? 'selected' : ''}} >Ordenes En Estado Normal</option>
+										<option value="{{env('ORDER_STATUS_CANCELED_FROM_USER')}}" {{$request->status == env('ORDER_STATUS_CANCELED_FROM_USER') ? 'selected' : ''}}>Ordenes canceladas por nosotros</option>
+										<option value="{{env('ORDER_STATUS_CANCELED_FROM_CLIENT')}}" {{$request->status == env('ORDER_STATUS_CANCELED_FROM_CLIENT') ? 'selected' : ''}}>Ordenes canceladas por el cliente</option>
+										<option value="{{env('ORDER_STATUS_PASSED')}}" {{$request->status == env('ORDER_STATUS_PASSED') ? 'selected' : ''}}>Ordenes que ya psaron las fechas</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group row ">
+								<label class="col-md-3 col-form-label">Fechas</label>
+								<div class="col-md-3">
+									<input type="text" class="dateFilter form-control" name="start" placeholder="{{$request->start ? $request->start : 'inicio'}}" >
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="dateEnd form-control" name="end" placeholder="{{$request->end ? $request->end : 'final'}}">
+								</div>
+								<div class="col-md-2">
+									<input type="submit" name="" class="btn btn-info" value="Filtrar">
+								</div>
 							</div>
 						</div>
-						<div class="col-md-9 big-margin-bot">
-							<label class="col-md-4">Fechas</label>
-							<div class="col-md-3">
-								<input type="text" class="dateFilter form-control" name="start" placeholder="{{$request->start ? $request->start : 'inicio'}}" >
-							</div>
-							<div class="col-md-3">
-								<input type="text" class="dateEnd form-control" name="end" placeholder="{{$request->end ? $request->end : 'final'}}">
-							</div>
-							<div class="col-md-2">
-								<input type="submit" name="" class="btn btn-info" value="Filtrar">
-							</div>
-						</div>
-					</div>
-				</form>
+					</form>
+				</div>
 			
 			</div>
 		</div>
@@ -38,7 +43,7 @@
 		<h1>Ordenes</h1>
 	</div>
 	<div class="container">
-		<table class="table table-bordered">
+		<table class="table table-bordered" id="table">
 			<thead class="elegant-color" style="background-color: #32383e; color: white;">
 				<tr>
 					<td>ID</td>

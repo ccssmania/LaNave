@@ -1,9 +1,16 @@
-@extends('layouts.main')
+@extends("layouts.app")
 @section('title', 'Agenda')
-@section('content')
+@section('description', 'Agenda Calendario')
+@section('font','calendar')
+@section('color','white')
+@section("content")
 
 <div id="calendar"></div>
-
+<div class="floating">
+	<a href="{{url('/tasks/create')}}" class="btn btn-primary btn-fab" title="Agregar una tarea">
+		<i class="material-icons">add</i>
+	</a>
+</div>
 
 <div class="modal" tabindex="-1" role="dialog">
 	<div class="modal-dialog" role="document">
@@ -42,12 +49,12 @@
 							<input  id="end" class="form-control " type="text" name="end">
 						</div>
 					</div>
-					<div class="form-group big-margin-bot">
+					<div class="form-group row">
 
-						<div class="col-md-6 text-right ">
+						<div class="col-sm-6 ">
 							<input type="submit" value="Enviar" class="btn btn-info">
 						</div>
-						<div class="col-md-6 ">
+						<div class="col-sm-6 ">
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 						</div>
 					</div>

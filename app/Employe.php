@@ -13,4 +13,9 @@ class Employe extends Model
     ];
 
     protected $table = 'employees';
+
+
+    public static function scopeAllActive($query){
+        return $query->where('status', '0')->get();
+    }
 }

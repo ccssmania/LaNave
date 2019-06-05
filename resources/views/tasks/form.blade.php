@@ -1,15 +1,14 @@
 <div class="">
 	<div class="row">
-		<div class="col-md-10 big-margin-bot little-margin-left">
+		<div class="col-md-10 mx-auto">
 			<div class="panel" >
-				<div class="panel-heading text-black" style="background-color: #64b5f6;">Tarea</div>
 				@if(isset($task->title))
 				@include('tasks.delete')
 				@endif
 				<form class="form-horizontal big-margin-top" method="{{$method}}" action="{{$url}}">
 					{{ csrf_field() }}
 					
-					<div class="form-group ">
+					<div class="form-group">
 						<label class="col-md-4 control-label">Titulo </label>
 						<div class="col-md-6">
 							<input type="text" name="title"  placeholder="{{$task->title ? $task->title : 'Titulo'}}" class="form-control" {{$task->title ? '' : 'required'}}>
@@ -35,12 +34,14 @@
 							<input disabled class="form-control dateEnd" id="date1" type="text" name="end" placeholder="{{$task->end ? $task->end : ''}}" value="{{$task->end ? $task->end : ''}}" {{$task->end ? '' : 'required'}}>
 						</div>
 					</div>
-					<div class="form-group big-margin-bot">
+					<div class="form-group row">
 
-						<div class="col-md-6 text-right ">
-							<input type="submit" value="Enviar" class="btn btn-success">
+						<div class="col-md-6  ">
+							<button type="submit" class="btn btn-primary"><i class="fa fa-fw fa-lg fa-check-circle"></i>
+								Save
+							</button>
 						</div>
-						<div class="col-md-6 ">
+						<div class="col-md-6">
 							<a href="{{url('/tasks')}}" class="btn btn-info">Atrás</a>
 						</div>
 					</div>

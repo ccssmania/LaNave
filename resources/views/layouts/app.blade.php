@@ -1,68 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    
+    @include('partials.head')
+    @include('partials.jsfiles')
 
-<head>
+<body class=" {{get_class(Route::getCurrentRoute()->getController()) == 'App\Http\Controllers\HomeController' ? 'page-top' : 'app sidebar-mini'}} ">
+    @if(get_class(Route::getCurrentRoute()->getController()) == 'App\Http\Controllers\HomeController' or get_class(Route::getCurrentRoute()->getController()) == 'App\Http\Controllers\ReserveController')
+        @include('partials.headerPublic')
+        @if(Session::has('message'))
+            <p class="alert alert-dismissible alert-success">{!! Session::get('message') !!}</p>
+        @endif
 
-	@include('partials.head_home')
+        @if(Session::has('errorMessage'))
+            <p class="alert alert-dismissible {{ Session::get('alert-class', 'alert-danger') }}">{{ Session::get('errorMessage') }}</p>
+        @endif
+        <main class="" id="app">
+            @yield('content')
+        </main>
+    @else
+        <!-- Admin Panel -->
+        @include('partials.headerAdmin')
+        @include('partials.sidbar')
+        @if(Session::has('message'))
+            <p class="alert alert-dismissible alert-success" style="margin-top: 50px; margin-left: 230px; text-align: center;">{!! Session::get('message') !!}</p>
+        @endif
 
-</head>
-
-<body>
-
-	<!-- Navigation -->
-	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-		<div class="container">
-			<a class="navbar-brand" href="{{url('/')}}">{{ config('app.name', 'Laravel') }}</a>
-			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="{{url('/about')}}">Sobre Nosotros</a>
-					</li>
-					<!--<li class="nav-item">
-						<a class="nav-link" href="{{url('/services')}}">Servicios</a>
-					</li>-->
-					<li class="nav-item">
-						<a class="nav-link" href="{{url('/contact')}}">Contacto</a>
-					</li>
-						<!--<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Portfolio
-							</a>
-							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-								<a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a>
-								<a class="dropdown-item" href="portfolio-2-col.html">2 Column Portfolio</a>
-								<a class="dropdown-item" href="portfolio-3-col.html">3 Column Portfolio</a>
-								<a class="dropdown-item" href="portfolio-4-col.html">4 Column Portfolio</a>
-								<a class="dropdown-item" href="portfolio-item.html">Single Portfolio Item</a>
-							</div>
-						</li>-->
-					<li class="nav-item">
-						@if (Auth::guest())
-						<li><a class="nav-link" href="{{ route('login') }}">Ingresar</a></li>
-						@endif
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	@if(Session::has('message'))
-	<p class="alert alert-success">{!! Session::get('message') !!}</p>
-	@endif
-
-	@if(Session::has('errorMessage'))
-	<p class="alert {{ Session::get('alert-class', 'alert-danger') }}">{{ Session::get('errorMessage') }}</p>
-	@endif
-	@yield('content')
-	<div  class="footer main-footer py-5 bg-dark ">
-		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
-		</div>
-			<!-- /.container -->
-	</div>
-	@include('partials.jsfiles_home')
+        @if(Session::has('errorMessage'))
+            <p class="alert alert-dismissible {{ Session::get('alert-class', 'alert-danger') }}" style="margin-top: 50px; margin-left: 230px; text-align: center;">{{ Session::get('errorMessage') }}</p>
+        @endif
+        <main class="app-content bg-@yield('color')" id="app">
+            <div class="app-title">
+                <div>
+                  <h1><i class="fa fa-@yield('font')"></i> @yield('title')</h1>
+                  <p>@yield('description')</p>
+                </div>
+                <ul class="app-breadcrumb breadcrumb">
+                  <li class="breadcrumb-item"><i class="fa fa-@yield('font') fa-lg"></i></li>
+                  <li class="breadcrumb-item"><a href="#">@yield('title')</a></li>
+                </ul>
+              </div>
+            @yield('content')
+        </main>
+    @endif
 </body>
-
 </html>

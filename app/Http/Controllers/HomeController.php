@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Contact;
 use App\Employe;
-use App\Http\Services\Google;
+use App\Banner;
 use App\Order;
 use App\User;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\OrderCanceledFromClient;
+use App\BeforeAfter;
 class HomeController extends Controller
 {
     /**
@@ -40,7 +41,11 @@ class HomeController extends Controller
     {
         $products = Product::where('status', 0)->paginate(15);
         $contact = Contact::find(1);
-        return view('home', compact('products', 'contact'));
+        $banners = Banner::all();
+        $employees = Employe::allActive();
+        $products = Product::allActive();
+        $before_after = BeforeAfter::all();
+        return view('public.home',compact('banners','employees','products','contact','before_after'));
     }
     public function about(){
         $employees = Employe::all();
