@@ -15,10 +15,10 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('title');
             $table->text('description')->nullable();
             $table->integer('order_id')->unsigned();
-            $table->date('task_date');
+            $table->date('date');
             $table->timestamps();
 
             $table->foreign('order_id')->references('id')->on("orders");
