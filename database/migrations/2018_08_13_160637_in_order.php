@@ -17,7 +17,7 @@ class InOrder extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email');
-            $table->bigInteger('numer');
+            $table->bigInteger('number');
             $table->string('car_model');
             $table->integer('product_id')->unsigned();
         });
