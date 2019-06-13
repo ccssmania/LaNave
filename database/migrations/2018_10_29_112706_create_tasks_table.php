@@ -18,7 +18,7 @@ class CreateTasksTable extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->integer('order_id')->unsigned()->nullable();
-            $table->date('date');
+            $table->dateTime('date');
             $table->timestamps();
 
             $table->foreign('order_id')->references('id')->on("orders");

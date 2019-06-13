@@ -15,7 +15,6 @@ class AddColumnDateEndToTask extends Migration
     {
         Schema::table("tasks", function(Blueprint $table){
             $table->dateTime("end");
-            $table->dateTime("date")->change();
         });
     }
 
