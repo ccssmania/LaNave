@@ -10,6 +10,7 @@ class Task extends Model
 
     protected $appends = ['url'];
 
+    protected $dates = ['date','end'];
 
     public function getUrlAttribute(){
     	return  '/tasks/'.$this->id.'/edit';

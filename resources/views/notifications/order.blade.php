@@ -1,11 +1,13 @@
-@extends('layouts.main')
-@section('title','Crear o  rechazar orden')
+@extends('layouts.app')
+@section('title','Agendar Cita')
+@section('description','Formulario para agendar una cita pedida')
+@section('font','book')
 @section('content')
 <div class="content">
 	<h2> Especificaciones de la orden</h2>
-	<div class="row big-margin-top">
+	<div class="col-md-6 mx-auto big-margin-top">
 		
-		<div class="col-md-4 offset-md-3 text-rigth">
+		<div class="row text-center">
 			<label class="control-label col-md-4">Nombre : </label>
 			<div class="col-md-6 text-left">
 				<p><strong>{{$in_order->name}}</strong></p>
@@ -21,17 +23,22 @@
 			</div>
 		</div>
 
-		<div class="col-md-4 offset-md-3 text-left">
+		<div class="row text-center">
 			<label class="control-label col-md-4">Coche : </label>
-			<div class="col-md-6">
-				<p><strong>{{$in_order->car_model}}</strong></p>
+			<div class="col-md-6 text-left">
+				<p><strong>{{$in_order->car_model}} - {{isset($in_order->category) ? $in_order->category->name : ''}} </strong></p>
 			</div>
 			<label class="control-label col-md-4">Producto : </label>
-			<div class="col-md-6">
+			<div class="col-md-6 text-left" >
 				<p><strong>{{$product->name}}</strong></p>
 			</div>
-			<button data-toggle="modal" id="button" type="button" data-target="#myModal" class="btn btn-info" >Agendar</button>
-			<a href="{{url('/order/'.$notification->id.'/delete')}}" class="btn btn-default">Rechazar</a>
+			
+		</div>
+		<div class="row text-right">
+			<div class="col-md-4">
+				<button data-toggle="modal" id="button" type="button" data-target="#myModal" class="btn btn-primary" >Agendar</button>
+				<a href="{{url('/order/'.$notification->id.'/delete')}}" class="btn btn-default">Rechazar</a>
+			</div>
 		</div>
 	</div>
 </div>
@@ -73,10 +80,10 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label  class="col-md-4 control-label">Description </label>
+						<label  class="col-md-4 control-label">Descripción </label>
 
 						<div class="col-md-6">
-							<textarea required class="form-control" name="description">Nombre: {{$in_order->name}} &#13;&#10;Número : {{$in_order->number}} &#13;&#10;Correo : {{$in_order->email}} &#13;&#10;Coche : {{$in_order->car_model}}</textarea>
+							<textarea required class="form-control" name="description">Nombre: {{$in_order->name}} &#13;&#10;Número : {{$in_order->number}} &#13;&#10;Correo : {{$in_order->email}} &#13;&#10;Coche : {{$in_order->car_model}} - {{isset($in_order->category)? $in_order->category->name : ''}}</textarea>
 
 						</div>
 					</div>
@@ -100,10 +107,10 @@
 							<input  id="in_order" class="form-control " value="{{$notification->id}}" type="text" name="notification_id">
 						</div>
 					</div>
-					<div class="form-group big-margin-bot">
+					<div class="form-group big-margin-bot row">
 
 						<div class="col-md-6 text-right ">
-							<input type="submit" value="Enviar" class="btn btn-info">
+							<input type="submit" value="Agendar" class="btn btn-primary">
 						</div>
 						<div class="col-md-6 ">
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

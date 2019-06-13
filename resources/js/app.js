@@ -182,6 +182,58 @@ $(document).ready(function(){
 		deleteEmploye($(".deleteE").attr('name'));
 	});
 
+	//open reserve modal
+	$('.productReserve').click(function(){
+		$('#reserve').modal('show');
+		$('#portfolioModal_'+this.rel).modal('hide');
+		$('#product_id option[value='+this.rel+']').prop('selected',true);
+	})
+
+	//get Price
+	$('#reserve').on('shown.bs.modal',function(){
+		setPrice();
+	});
+	$('.product').change(function(){
+		setPrice();
+	});
+	$('#reserve').on('hidden.bs.modal',function(){
+		$('.category').hide();
+		$('.category').prop('required',false);
+	});
+	//ordering
+	$('#reserveForm').submit(function(e){
+		e.preventDefault();
+
+		var $form = $(this);
+		$.ajax({
+			url: $form.attr("action"),
+			method: $form.attr("method"),
+			data: $form.serialize(),
+			success: function(data){
+				swal({title: "Enviado!", text: "La petición fue enviada correctamente, te enviaremos un correo de confirmación en las próximas horas.", type: "success"},function(){
+	              $('#reserve').modal('hide');
+	            });
+			},
+			error: function(err){
+				console.log(err);
+			}
+
+			});
+
+		return false;
+
+	});
+
+	//clear all the fields after modal close
+	$('#reserve').on('hidden.bs.modal', function (e) {
+	  $(this)
+	    .find("input,textarea,select")
+	       .val('')
+	       .end()
+	    .find("input[type=checkbox], input[type=radio]")
+	       .prop("checked", "")
+	       .end();
+	});
 })
 
 
@@ -228,5 +280,30 @@ function readURL(input) {
 		}
 
 		reader.readAsDataURL(input.files[0]);
+	}
+}
+
+function setPrice(){
+	if( $('.product').val()){
+		$.ajax({
+			url: '/reserve/'+$('.product').val()+'/'+$('.product_category').val(),
+			method: 'GET',
+			success: function(data){
+				console.log(data);
+				if(data == 'OK'){
+					$('.category').hide();
+					$('.category').prop('required',false);
+					$('.category').prop('value','');
+				}
+				if(data == 'error'){
+					$('.category').show();
+					$('.category').prop('required',true);
+				}
+			},
+			error: function(e){
+				console.log(e);
+			}
+		});
+		return false;
 	}
 }

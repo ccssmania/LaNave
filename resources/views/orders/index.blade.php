@@ -4,7 +4,7 @@
 @section('font','book')
 @section('content')
 		<div class="col-md-6 offset-md-3">
-			<div class="card" >
+			<div class="" >
 				<div class="card-body">
 					<h2 class="card-title">Filtro</h2>
 					<form class="form-horizontal big-margin-top" method="GET" action="{{url('/orders')}}">
@@ -57,9 +57,9 @@
 				@foreach ($orders as $order)
 				<tr>
 					<td>{{ $order->id }}</td>
-					<td> Inicio :{{ $order->task ? $order->task->date : '' }} <br> Fin: {{ $order->task? $order->task->end : ''}} </td>
+					<td> Inicio: {{ $order->task ? $order->task->date : '' }} <br> Fin: {{ $order->task? $order->task->end : ''}} </td>
 					<td>{{ $order->in_order->product->name }}</td>
-					<td>Nombre : {{ $order->in_order->name }} <br> Correo: {{$order->in_order->email}} <br> Número: {{$order->in_order->number}} <br> Coche: {{$order->in_order->car_model}} </td>
+					<td>Nombre : {{ $order->in_order->name }} <br> Correo: {{$order->in_order->email}} <br> Número: {{$order->in_order->number}} <br> Coche: {{$order->in_order->car_model}} - {{isset($order->in_order->category)? $order->in_order->category->name : ''}} </td>
 					<td >
 						<a href="{{url("/order/$order->id")}}">Ver</a>
 						 <a href="{{url('/order/'. $order->id .'/edit')}}">Editar</a>

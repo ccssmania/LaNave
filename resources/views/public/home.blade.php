@@ -43,7 +43,7 @@
       <div class="row text-center">
         <div class="col-md-4 mx-auto">
           <span class="fa-stack fa-6x">
-            <a href=" {{url('/reserve')}} ">
+            <a  data-toggle="modal" href="#reserve">
               <i class="fas fa-circle fa-stack-2x text-primary"></i>
               <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
             </a>
@@ -85,7 +85,7 @@
     </div>
   </section>
 
-  <!-- About -->
+  <!-- Before After -->
   <section class="page-section" id="about">
     <div class="container">
       <div class="row">
@@ -182,13 +182,13 @@
       </div>
       <div class="row">
         <div class="col-lg-8 mx-auto text-center">
-          <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+          <p class="large text-muted"></p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Clients -->
+  <!-- ABOUT -->
   <section class="py-5">
     <div class="container">
       <h2 class="text-center text-uppercase">Sobre Nosotros</h2>
@@ -238,9 +238,12 @@
                 </div>
               </div>
               <div class="clearfix"></div>
-              <div class="col-lg-12 text-center">
+              <div class="col-lg-6 text-center">
                 <div id="success"></div>
                 <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase" type="submit">Enviar</button>
+              </div>
+              <div class="col-lg-6 text-center">
+                <a href="#address" data-toggle="modal" class="btn btn-primary btn-xl">Como Llegar</a>
               </div>
             </div>
           </form>
@@ -248,7 +251,6 @@
       </div>
     </div>
   </section>
-
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
@@ -310,8 +312,17 @@
                   <p class="item-intro text-muted">{{$product->title}}</p>
                   <img class="img-fluid d-block mx-auto" src="{{url('/images/product_'.$product->id.'.jpg')}}" alt="">
                   <p>{!!$product->description!!}</p>
+                  <ul class="list-inline">
+                  @if(isset($product->price))
+                    <li>Precio : {{$product->price}} € </li>
+                  @else
+                    @foreach($product->categories as $category)
+                      <li>{{$category->name}} : {{$product->prices()->where('product_category_id', $category->id)->first()->price}} € </li>
+                    @endforeach
+                  @endif
+                  </ul>
                   <div class="col-md-12 little-margin-bot">
-                    <a class="btn btn-primary btn-xl text-uppercase" href="{{url('/services')}}"> Reservar </a>
+                    <a class="btn btn-primary btn-xl text-uppercase productReserve" href="#" rel="{{$product->id}}" id="productReserve_{{$product->id}}"> Reservar </a>
                   </div>
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fas fa-times"></i>
@@ -325,4 +336,126 @@
     </div>
   @endforeach
 
+  <div class="portfolio-modal modal fade" id="reserve" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+          <div class="lr">
+            <div class="rl"></div>
+          </div>
+        </div>
+        <div class="tab-pane container">
+          <div class="tile user-settings">
+            <h2 class="line-head text-uppercase">Reservar</h2>
+            <form action="{{url('/order')}}" method="GET" id="reserveForm">
+              @csrf
+              <div class="row mb-4">
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-shower"></i></span>
+                  </div>
+                  <select class="form-control product" name="product_id" id="product_id"  required>
+                    <option value="">Seleccionar tipo de lavado</option>
+                    @foreach($products as $product)
+                      <option value="{{$product->id}}" title=" {{$product->description}} "> {{$product->name}} </option>
+                    @endforeach
+                  </select>
+                </div>
+                <div class="input-group form-group category" style="display: none;">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-car"></i></span>
+                  </div>
+                  <select class="form-control product_category" name="product_category_id" id="product_category_id" >
+                    <option value="">Seleccionar el tipo de coche</option>
+                    @foreach($product_categories as $product_category)
+                      <option value="{{$product_category->id}}" title=" {{$product_category->description}} "> {{$product_category->name}} </option>
+                    @endforeach
+                  </select>
+                </div>
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-car"></i></span>
+                  </div>
+                    <input id="car_model" placeholder="Ingresar las especificaciones del coche" type="text" class="form-control @error('car_model') is-invalid @enderror" name="car_model" value="{{ old('car_model') }}" required>
+
+                    @error('car_model')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                    @endif
+                </div>
+                <div class="input-group form-group price" style="display: none;">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-money"></i></span>
+                  </div>
+                  <label class="price_value"></label>
+                </div>
+
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                  </div>
+                  <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" required autocomplete="name" placeholder="Nombre" autofocus>
+
+                  @error('name')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
+                </div>
+                
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                  </div>
+                  <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email"  required  placeholder="Correo Electronico" autofocus>
+
+                  @error('email')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
+                </div>
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                  </div>
+                  <input id="number" type="number" class="form-control @error('number') is-invalid @enderror" name="number"  required  placeholder="Número de teléfono" autofocus>
+
+                  @error('number')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
+                </div>
+                <div class="col-md-12 mx-auto little-margin-bot">
+                  <button type="submit" class="btn btn-primary btn-xl text-uppercase"><i class="fa fa-fw fa-lg fa-check-circle"></i>
+                    Reservar
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="portfolio-modal modal fade" id="address" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+          <div class="lr">
+            <div class="rl"></div>
+          </div>
+        </div>
+        <div class="tab-pane container">
+          <div class="tile user-settings">
+            <h2 class="line-head text-uppercase">Como Llegar</h2>
+            <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;q={{isset($contact->address) ? $contact->address : 'Torrijos'}}&amp;t=m&amp;z=13&amp;output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection

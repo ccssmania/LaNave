@@ -28,3 +28,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/locale/es.js"></script>
     <script src="{{ url('js/app.js') }}" defer></script>
+    <script type="text/javascript"  src="{{url('js/order.js')}}"></script>

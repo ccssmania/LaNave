@@ -12,6 +12,7 @@ use App\User;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\OrderCanceledFromClient;
 use App\BeforeAfter;
+use App\ProductCategory;
 class HomeController extends Controller
 {
     /**
@@ -45,7 +46,8 @@ class HomeController extends Controller
         $employees = Employe::allActive();
         $products = Product::allActive();
         $before_after = BeforeAfter::all();
-        return view('public.home',compact('banners','employees','products','contact','before_after'));
+        $product_categories = ProductCategory::allActive();
+        return view('public.home',compact('banners','employees','products','contact','before_after','product_categories'));
     }
     public function about(){
         $employees = Employe::all();

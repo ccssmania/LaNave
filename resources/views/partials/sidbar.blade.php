@@ -30,7 +30,7 @@
       <a class="app-menu__item {{get_class(Route::getCurrentRoute()->getController()) == "App\Http\Controllers\NotificationController" ? 'active' : ''}}" href="{{url('/notifications')}}"><i class="app-menu__icon fa fa-bell {{$unread > 0 ? 'notification-icon' :''}} "></i><span class="app-menu__label">Notificaciones</span></a>
     </li>
     <li>
-      <a class="app-menu__item {{get_class(Route::getCurrentRoute()->getController()) == "App\Http\Controllers\NotificationController" ? 'active' : ''}}" href="{{url('/orders')}}"><i class="app-menu__icon fa fa-th-list {{$unread > 0 ? 'notification-icon' :''}} "></i><span class="app-menu__label">Ordenes</span></a>
+      <a class="app-menu__item {{get_class(Route::getCurrentRoute()->getController()) == "App\Http\Controllers\OrderController" ? 'active' : ''}}" href="{{url('/orders')}}"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Ordenes</span></a>
     </li>
   </ul>
 </aside>

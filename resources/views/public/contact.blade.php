@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.app')
 @section('content')
 <div class="container">
 
@@ -18,21 +18,18 @@
 		<!-- Map Column -->
 		<div class="col-lg-8 mb-4">
 			<!-- Embedded Google Map -->
-			<iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;q={{$contact->address}}&amp;t=m&amp;z=13&amp;output=embed"></iframe>
+			<iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;q={{isset($contact->address) ? $contact->address : 'Torrijos'}}&amp;t=m&amp;z=13&amp;output=embed"></iframe>
 		</div>
 		<!-- Contact Details Column -->
 		<div class="col-lg-4 mb-4">
 			<h3>Detalles de contacto</h3>
 			<p>
-				{{$contact->address}}
 			</p>
 			<p>
-				<abbr title="Teléfono">T</abbr>: {{$contact->number}}
+				<abbr title="Teléfono">T</abbr>: 
 			</p>
 			<p>
 				<abbr title="Email">E</abbr>:
-				<a href="mailto:{{$contact->email}}">{{$contact->email}}
-				</a>
 			</p>
 		</div>
 	</div>

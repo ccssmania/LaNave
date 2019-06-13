@@ -7,7 +7,7 @@
 		<h1>Notificaciones</h1>
 	</div>
 	<div class="container">
-		<table class="table table-bordered">
+		<table class="table table-bordered" id="table">
 			<thead  style="background-color: #32383e; color: white;">
 				<tr>
 					<td>Titulo</td>
@@ -17,7 +17,7 @@
 			</thead>
 			<tbody>
 				@foreach ($notifications as $n)
-				<tr class="{{isset($n->read_at) ?  'bg-success' : 'bg-danger' }}">
+				<tr class="{{isset($n->read_at) ?  'table-success' : 'table-danger' }}">
 					<td>{{ $n->data['name'] }}</td>
 					<td>{!! $n->data['type'] == 'order_request' ? 
 						$n->data['in_order']['name'] . ' quiere un '. \App\Product::find($n->data['in_order']['product_id'])->name . 

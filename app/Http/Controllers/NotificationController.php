@@ -8,7 +8,7 @@ use App\Tasks;
 
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\SendMessage;
-
+use App\In_order;
 
 class NotificationController extends Controller
 {
@@ -33,7 +33,7 @@ class NotificationController extends Controller
     public function order($id){
     	$user = \Auth::user();
         $notification = $user->notifications()->where('id',$id)->first();
-        $in_order = (object)$notification->data['in_order'];
+        $in_order = In_order::find($notification->data['in_order']['id']);
         $product = Product::find($in_order->product_id);
         return view('notifications.order', compact('notification','in_order','product'));
     }

@@ -11,6 +11,7 @@ use App\Notifications\OrderAcepted;
 use App\Order;
 use App\Task;
 use App\Http\Models\OrderModel;
+use App\Product;
 class OrderController extends Controller
 {
 	public function __construct(){
@@ -22,18 +23,24 @@ class OrderController extends Controller
         $orders = OrderModel::getOrders($request->status,$request->start,$request->end);
         return view('orders.index', compact("orders", 'request'));
     }
-	public function order(Request $request, $id){
+	public function order(Request $request){
 		$in = new In_order($request->all());
-		$in->product_id = $id;
+        $product = Product::find($request->product_id);
+        if(isset($product->price)){
+            $in->price = $product->price;
+        }else{
+            $price = $product->prices()->where('product_category_id', $request->product_category_id)->first()->price;
+            $in->price = $price;
+        }
 		if($in->save()){
 			$users = User::all();
 			Notification::send($users, new OrderCreated($in));
 			\Session::flash("message", "Cita pedida satisfactoriamente, por favor esperar el mensaje de aceptación");
-			return redirect("/product/$id");
+			return Response("OK",200);
 		}
 		else{
 			\Session::flash("errorMessage", "Algo salio mal, Intentarlo mas tarde");
-			return redirect("/product/$id");
+			return redirect("/");
 		}
 	}
 

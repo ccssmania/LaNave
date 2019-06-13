@@ -12,8 +12,7 @@ class ContactUsController extends Controller
     public function message(Request $request){
     	$users = User::all();
     	Notification::send($users, new ContactUs($request));
-    	\Session::flash("message", "Mensaje Enviado");
-    	return redirect("/contact");
+    	return Response('OK',200);
 
     }
 }

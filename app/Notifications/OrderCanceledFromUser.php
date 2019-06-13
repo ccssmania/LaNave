@@ -48,7 +48,7 @@ class OrderCanceledFromUser extends Notification
                 ->subject('Cita Cancelada')
                 ->greeting('Apreciado (a) '. $this->data->name)
                 ->line('Lamentamos informarle que su cita para: '.$this->product->name .' ha sido cancelada')
-                ->action('Contactenos', url('/contact'))
+                ->action('Contactenos', url('/contactus'))
                 ->line('Gracias por usar nuestra aplicación, esperamos verlo pronto!');
     }
 

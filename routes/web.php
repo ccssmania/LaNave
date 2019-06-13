@@ -105,7 +105,7 @@ Route::post('/task/{id}/delete','TasksController@destroy');
 
 //orders
 
-Route::get('/order/{id}', 'OrderController@order');
+Route::get('/order', 'OrderController@order');
 Route::post('/order', 'OrderController@store');
 Route::get('/order/{id}/delete','OrderController@reject');
 Route::get('/orders','OrderController@index');
@@ -126,6 +126,7 @@ Route::get('/notifications/delete/{id}', 'NotificationController@delete');
 
 //Reserve
 Route::get('/reserve','ReserveController@index');
+Route::get('/reserve/{product_id}','ReserveController@getPrice');
 
 //path to find image
 Route::get('products/images/{filename}',function($filename){
