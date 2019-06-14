@@ -19,19 +19,19 @@
 				@foreach ($notifications as $n)
 				<tr class="{{isset($n->read_at) ?  'table-success' : 'table-danger' }}">
 					<td>{{ $n->data['name'] }}</td>
-					<td>{!! $n->data['type'] == 'order_request' ? 
-						$n->data['in_order']['name'] . ' quiere un '. \App\Product::find($n->data['in_order']['product_id'])->name . 
-						'<br>' . 'email : ' . $n->data['in_order']['email'] . '<br>' .'número : '. $n->data['in_order']['number']
-						 : 
-						'Nombre: '.$n->data['data']['name']. '<br>'. 'email : '. $n->data['data']['email']. '<br>'. 'Numero: ' .
-						 $n->data['data']['number']
-						  !!}</td>
+					<td>
+						@foreach($n->data['data'] as $key => $value)
+							<strong> @lang($key) </strong> : {{$value}} <br>
+						@endforeach
+					</td>
 					<td >
 						<a href="{{$n->data['type'] == 'order_request' ? url("/notifications/$n->id/order") : url("/notifications/$n->id/contactus")}}">{{$n->data['type'] == 'order_request' ? 'Agendar' : 'Responder'}}</a>
 						@if(!isset($n->read_at))
 						<br>
 						<a href="{{url('/notifications/'.$n->id.'/mark')}}" >Marcar como leido</a>
 						@endif
+						<br>
+						<a href=" {{url('/notifications/'.$n->id)}} ">Ver</a>
 					</td>
 					@endforeach
 				</tr>

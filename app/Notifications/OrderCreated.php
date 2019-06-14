@@ -66,7 +66,15 @@ class OrderCreated extends Notification
         return [
             'type' => 'order_request',
             'name' => 'Nueva petición de cita',
+            'description' => 'Esta notificación es generada cuando se tiene una nueva orden de cita en la pagina',
             'in_order' => $this->data,
+            'data' => [
+                'email'  => $this->data->email,
+                'numero' => $this->data->number,
+                'name'  => $this->data->name,
+                'coche' => $this->data->car_model,
+                'producto' => $this->product->name,
+            ],
         ];
     }
 }

@@ -13163,3 +13163,7 @@ hr.star-dark:after {
   display: none;
 }
 
+#messaging {
+  min-height: 400px;
+}
+

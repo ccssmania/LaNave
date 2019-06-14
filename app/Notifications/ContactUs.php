@@ -45,7 +45,7 @@ class ContactUs extends Notification
         return (new MailMessage)
                     ->greeting('Hola! :')
                     ->subject("Alguien nos quiere contactar")
-                    ->line("Nombre: <strong>".$this->data->name."</strong>")->line("Mensaje: <strong>".$this->data->message."</strong>")->line("Email: ".$this->data->email)->line("Numero Telefonico: <strong>".$this->data->number . "</strong>")
+                    ->line("Nombre: <strong>".$this->data->name."</strong>")->line("Mensaje: <strong>".$this->data->message."</strong>")->line("Email: ".$this->data->email)->line("Numero Telefónico: <strong>".$this->data->number . "</strong>")
                     ->action('Ir a notificaciones', url('/notifications'));
     }
 
@@ -60,6 +60,7 @@ class ContactUs extends Notification
         return [
             'type' => 'contactus',
             'name' => 'Alguien nos contacta',
+            'description' => 'Esta notificación es generada automáticamente cuando alguien quiere contactarnos a través de la pagina',
             'data' => [
 
                 'email'  => $this->data->email,

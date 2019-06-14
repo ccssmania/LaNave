@@ -63,7 +63,15 @@ class OrderCanceledFromUser extends Notification
         return [
             "type" => "order_canceled",
             "name" => "Orden Cancelada",
+            "description" => "Esta notificación es generada automaticamente cuando se cancela la cita de un cliente por parte nuestra",
             "in_order" => $data->id,
+            'data' => [
+                'email'  => $this->data->email,
+                'numero' => $this->data->number,
+                'name'  => $this->data->name,
+                'coche' => $this->data->car_model,
+                'producto' => $this->product->name,
+            ],
         ];
     }
 }

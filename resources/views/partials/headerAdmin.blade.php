@@ -15,7 +15,7 @@
         <li class="app-notification__title">Tienes {{$unread}} notificaciones nuevas.</li>
         <div class="app-notification__content">
           @foreach(Auth::user()->unreadNotifications()->take(5)->get() as $notification)
-          <li><a class="app-notification__item" href="{{url('/notifications/'.$notification->id)}}"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
+          <li><a class="app-notification__item" href="{{url('/notifications/'.$notification->id)}}"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-@if($notification->data['type'] == 'contactus')envelope @elseif($notification->data['type'] == 'order_canceled')trash @elseif($notification->data['type'] ==  'order_request')book @endif fa-stack-1x fa-inverse"></i></span></span>
               <div>
                 <p class="app-notification__message">{{$notification->data['name']}}</p>
                 <p class="app-notification__meta">{{$notification->created_at->diffForHumans()}}</p>

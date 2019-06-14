@@ -30,7 +30,7 @@ class OrderCanceledFromClient extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail','database'];
     }
 
     /**
@@ -63,7 +63,15 @@ class OrderCanceledFromClient extends Notification
         return [
             "type" => "order_canceled",
             "name" => "Orden Cancelada",
-            "in_order_id" => $this->in_order->id
+            "description" => "Esta notificacón es genereda automaticamente cuando un cliete cancela la cita programada",
+            "in_order_id" => $this->in_order->id,
+            'data' => [
+                'email'  => $this->in_order->email,
+                'numero' => $this->in_order->number,
+                'name'  => $this->in_order->name,
+                'coche' => $this->in_order->car_model,
+                'producto' => $this->in_order->product->name,
+            ],
         ];
     }
 }

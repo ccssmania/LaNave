@@ -62,4 +62,10 @@ class NotificationController extends Controller
         \Session::flash("message", "Notificación eliminada");
         return redirect("/notifications");
     }
+
+    public function show($id){
+        $user = \Auth::user();
+        $notification = $user->notifications()->where('id',$id)->first();
+        return view('notifications.show',compact('notification'));
+    }
 }
