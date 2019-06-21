@@ -18,7 +18,7 @@ class ValidateFirstSignUp
     public function handle($request, Closure $next)
     {
         $usersCount = User::count();
-        if($usersCount >0 && !Auth::check()){
+        if($usersCount >1 && !Auth::check()){
             return redirect("/");
         }
         return $next($request);
