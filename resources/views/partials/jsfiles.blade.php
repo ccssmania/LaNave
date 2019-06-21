@@ -8,7 +8,7 @@
 
     @if(get_class(Route::getCurrentRoute()->getController()) == "App\Http\Controllers\HomeController")
 	    <!--  For public page -->
-        <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.compatibility.min.js"></script>
 	 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqBootstrapValidation/1.3.7/jqBootstrapValidation.min.js"></script>
 		<script src=" {{url('js/contact_me.js')}} "></script>

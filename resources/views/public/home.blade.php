@@ -452,7 +452,7 @@
         <div class="tab-pane container">
           <div class="tile user-settings">
             <h2 class="line-head text-uppercase">Como Llegar</h2>
-            <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;q={{isset($contact->address) ? $contact->address : 'Torrijos'}}&amp;t=m&amp;z=13&amp;output=embed"></iframe>
+            <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;q={{isset($contact->address) ? $contact->address : 'Torrijos'}}&amp;t=m&amp;z=13&amp;output=embed"></iframe>
           </div>
         </div>
       </div>
