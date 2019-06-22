@@ -20,7 +20,7 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text"><i class="fas fa-facebook"></i></span>
 					</div>
-					<input id="facebook_link" type="text" class="form-control @error('facebook_link') is-invalid @enderror" name="facebook_link" value="{{ $employe->facebook_link }}"  placeholder="Link de facebool" >
+					<input id="facebook_link" type="text" class="form-control @error('facebook_link') is-invalid @enderror" name="facebook_link" value="{{ $employe->facebook_link }}"  placeholder="Link de facebook" >
 
 					@error('facebook_link')
 						<span class="invalid-feedback" role="alert">
