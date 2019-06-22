@@ -194,7 +194,7 @@
       <h2 class="text-center text-uppercase">Sobre Nosotros</h2>
       <hr class="star-dark mb-5">
       <div class="row">
-        <div class="col-md-4 ml-auto">
+        <div class="col-md-4 mr-auto">
           <p class="lead">{!! isset($contact) ?  $contact->about : '' !!}</p>
         </div>
         <div class="col-md-4 mr-auto">
