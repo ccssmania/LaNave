@@ -9,7 +9,7 @@ class Contact extends Model
     public $timestamps = null;
 
     protected $fillable = [
-    	"email", "number", "address", "details",
+    	"email", "number", "address", "details",'about',
     ];
 
     protected $table = 'contact';
