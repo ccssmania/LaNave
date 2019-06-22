@@ -86,7 +86,7 @@
   </section>
 
   <!-- Before After -->
-  <section class="page-section" id="about">
+  <section class="page-section" id="before_after">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
@@ -189,7 +189,7 @@
   </section>
 
   <!-- ABOUT -->
-  <section class="py-5">
+  <section class="py-5" id="about">
     <div class="container">
       <h2 class="text-center text-uppercase">Sobre Nosotros</h2>
       <hr class="star-dark mb-5">

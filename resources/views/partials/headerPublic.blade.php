@@ -15,6 +15,9 @@
             <a class="nav-link js-scroll-trigger" href="{{(get_class(Route::getCurrentRoute()->getController()) == 'App\Http\Controllers\ReserveController') ?  url('/#portfolio') : '#portfolio'}}">Portafolio</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{{(get_class(Route::getCurrentRoute()->getController()) == 'App\Http\Controllers\ReserveController') ?  url('/#before_after') : '#before_after'}}">Antes y Después</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="{{(get_class(Route::getCurrentRoute()->getController()) == 'App\Http\Controllers\ReserveController') ?  url('/#about') : '#about'}}">Sobre Nosotros</a>
           </li>
           <li class="nav-item">
