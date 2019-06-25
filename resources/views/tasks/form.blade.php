@@ -18,7 +18,7 @@
 						<label  class="col-md-4 control-label">Description </label>
 
 						<div class="col-md-6">
-							<textarea class="textarea" name="description">{{$task->description ? $task->description : ''}} {{old('description') ? old('description') : ''}}</textarea>
+							<textarea  name="description">{{$task->description ? $task->description : ''}} {{old('description') ? old('description') : ''}}</textarea>
 
 						</div>
 					</div>

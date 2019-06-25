@@ -70,7 +70,7 @@
 
 .app-sidebar__toggle {
 	padding: 0 15px;
-	font-family: fontAwesome;
+	font-family: 'Font Awesome 5 Free' !important;
 	color: #fff;
 	line-height: 2.4;
 	transition: background-color 0.3s ease;
@@ -78,6 +78,7 @@
 	&:before {
 		content: "\f0c9";
 		font-size: 21px;
+		font-weight: 900;
 	}
 	&:focus,
 	&:hover {

@@ -22,7 +22,7 @@
 							<label class="control-label">Descripción</label>
 						</span>
 					</div>
-					<textarea id="textarea" class=" @error('description') is-invalid @enderror" name="description"  placeholder="Nombre" > {{ $banner->description }} </textarea>
+					<textarea  class=" @error('description') is-invalid @enderror" name="description"  placeholder="Nombre" > {{ $banner->description }} </textarea>
 					@error('description')
 						<span class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>

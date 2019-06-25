@@ -47,16 +47,6 @@ $(document).ready(function(){
 	$('input[type=file]').change(function() {
 		readURL(this);
 	});
-	$('#textarea').summernote({
-        placeholder: $('#textarea').attr('placeholder'),
-        tabsize: 10,
-        height: 200
-      });
-	$('#textarea-details').summernote({
-        placeholder: $('#textarea-details').attr('placeholder'),
-        tabsize: 10,
-        height: 200
-      });
 
 	//dataTable
 	$('#table').DataTable();
@@ -82,7 +72,6 @@ $(document).ready(function(){
             $(".prices").hide();
         }
 	});
-	$(".textarea").summernote();
 	$('.dateStart').datetimepicker({format: 'YYYY-MM-DD h:mm',
 		minDate: $.now(),
 		icons: icons,

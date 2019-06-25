@@ -70,7 +70,7 @@
 							<label class="control-label">Sobre nosotros</label>
 						</span>
 					</div>
-					<textarea id="textarea" class=" @error('about') is-invalid @enderror" name="about"  placeholder="Sobre nosotros" > {{ $contact->about }} </textarea>
+					<textarea  class=" @error('about') is-invalid @enderror" name="about"  placeholder="Sobre nosotros" > {{ $contact->about }} </textarea>
 					@error('about')
 						<span class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>
@@ -83,7 +83,7 @@
 							<label class="control-label">Detalles</label>
 						</span>
 					</div>
-					<textarea id="textarea-details" class=" @error('details') is-invalid @enderror" name="details"  placeholder="Detalles de la empresa" > {{ $contact->details }} </textarea>
+					<textarea  class=" @error('details') is-invalid @enderror" name="details"  placeholder="Detalles de la empresa" > {{ $contact->details }} </textarea>
 					@error('details')
 						<span class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>

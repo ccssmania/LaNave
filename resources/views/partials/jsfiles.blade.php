@@ -4,7 +4,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
     <!-- Bootstrap js -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.min.js"></script>
 
     @if(get_class(Route::getCurrentRoute()->getController()) == "App\Http\Controllers\HomeController")
 	    <!--  For public page -->
@@ -14,7 +13,9 @@
 		<script src=" {{url('js/contact_me.js')}} "></script>
 	    <script src="{{ url('js/publicPage.js') }}" defer></script>
 	@endif
-
+    @if(get_class(Route::getCurrentRoute()->getController()) == "App\Http\Controllers\NotificationController")
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.min.js"></script>
+    @endif
     <script src="{{ url('js/panelApp.js') }}" defer></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>

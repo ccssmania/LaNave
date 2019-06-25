@@ -2,7 +2,6 @@
 @section('title','Enviar Correo')
 @section('description','Acá puedes responder al mensaje de contacto')
 @section('font','envelope')
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css' />
 @section('content')
 <div class="content">
 	<h2> Especificaciones de contacto</h2>
@@ -75,5 +74,12 @@
 	</div>
 </div>
 
+<script type="text/javascript">
+	$('.textarea').summernote({
+        placeholder: $('.textarea').attr('.placeholder'),
+        tabsize: 10,
+        height: 200
+      });
+</script>
 
 @endsection
