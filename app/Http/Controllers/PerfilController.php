@@ -47,7 +47,7 @@ class PerfilController extends Controller
 		$hasFile = $request->hasFile('file') && $request->file->isValid();
 		if($user->save()){
 			if($hasFile){
-				$image = Image::make($request->file)->encode('jpg')->save(storage_path('app/images/u_'.$user->id.'.jpg'));
+				$image = Image::make($request->file)->encode('webp')->save(storage_path('app/images/u_'.$user->id.'.webp'));
                 Session::flash('message', 'Actualizado');
                 return redirect('/perfil');
 			}
@@ -84,7 +84,7 @@ class PerfilController extends Controller
         }
     	if($employe->save()){
     		if($hasFile){
-                $image = Image::make($request->file)->resize(700,400)->encode('jpg')->save(storage_path('app/images/e_'.$employe->id.'.jpg'));
+                $image = Image::make($request->file)->resize(700,400)->encode('webp')->save(storage_path('app/images/e_'.$employe->id.'.webp'));
                 Session::flash('message', 'Trabajador guardado');
                 return redirect('/perfil');
     		}
@@ -115,7 +115,7 @@ class PerfilController extends Controller
 		$hasFile = $request->hasFile('file') && $request->file->isValid();
 		if($employe->save()){
 			if($hasFile){
-				$image = Image::make($request->file)->encode('jpg')->save(storage_path('app/images/e_'.$employe->id.'.jpg'));
+				$image = Image::make($request->file)->encode('webp')->save(storage_path('app/images/e_'.$employe->id.'.webp'));
                 Session::flash('message', 'Actualizado');
                 return redirect('/perfil');
 			}

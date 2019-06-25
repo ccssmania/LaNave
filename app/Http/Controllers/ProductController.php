@@ -47,7 +47,7 @@ class ProductController extends Controller
         }
     	if($product->save()){
     		if($hasFile){
-                $image = Image::make($request->image)->encode('jpg')->save(storage_path('app/images/product_'.$product->id.'.jpg'));
+                $image = Image::make($request->image)->encode('webp')->save(storage_path('app/images/product_'.$product->id.'.webp'));
     		}
             if (isset($request->checkPrices)) {
                 foreach ($request->prices as $key => $price) {
@@ -93,7 +93,7 @@ class ProductController extends Controller
         }
         if($product->update($request->all())){
             if($hasFile){
-                $image = Image::make($request->image)->encode('jpg')->save(storage_path('app/images/product_'.$product->id.'.jpg'));
+                $image = Image::make($request->image)->encode('webp')->save(storage_path('app/images/product_'.$product->id.'.webp'));
             }
             if (isset($request->checkPrices)) {
                 foreach ($request->prices as $key => $price) {

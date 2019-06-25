@@ -31,7 +31,7 @@
 			</div>
 			<div class="input-group form-group">
 				<div class="input-group-prepend">
-					<span class="input-group-addon"><img class="img-circle img-responsive img-center image"  src="{{url('/images/small/user_'.$user->id.'.jpg')}}" onerror="this.src='{{url("/images/small/perfil.png")}}'"></span>
+					<span class="input-group-addon"><img class="img-circle img-responsive img-center image"  src="{{url('/images/small/user_'.$user->id.'.webp')}}" onerror="this.src='{{url("/images/small/perfil.png")}}'"></span>
 				</div>
 				<input type="file" name="image" class="form-control @error('image') is-invalid @enderror" style="height: 90px">
 				@error('image')

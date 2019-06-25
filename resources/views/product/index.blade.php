@@ -18,7 +18,7 @@
 				<tbody>
 					@foreach($products as $product)
 						<tr>
-							<td width="100"><img src="{{url('/images/small/product_'.$product->id.'.jpg')}}" onerror="this.src='{{url("/images/small/product.jpg")}}'"></td>
+							<td width="100"><img src="{{url('/images/small/product_'.$product->id.'.webp')}}" onerror="this.src='{{url("/images/small/product.jpg")}}'"></td>
 							<td> {{$product->name}} </td>
 							<td> {!!$product->description!!} </td>
 							<td width="180">

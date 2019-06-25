@@ -8,7 +8,7 @@
 					<div class="row">
 
 						<div class="col-md-6">
-							<img class="card-img-top " src="{{url('/images/large/p_'.$product->id.'.jpg')}}" onerror="this.src='{{url("products/images/carwash.png")}}'" alt="Card image cap">
+							<img class="card-img-top " src="{{url('/images/large/p_'.$product->id.'.webp')}}" onerror="this.src='{{url("products/images/carwash.png")}}'" alt="Card image cap">
 						</div>
 
 						<div  class="col-md-6 ">

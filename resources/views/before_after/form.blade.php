@@ -31,9 +31,9 @@
 				</div>
 				<div class="input-group form-group">
 					<div class="input-group-prepend">
-						<span class="input-group-addon"><img class="img-circle img-responsive image img-center"  src="{{url('/images/small/before_'.$beforeAfter->id.'.jpg')}}" onerror="this.src='{{url("/images/small/perfil.png")}}'"></span>
+						<span class="input-group-addon"><img class="img-circle img-responsive image img-center"  src="{{url('/images/small/before_'.$beforeAfter->id.'.webp')}}" onerror="this.src='{{url("/images/small/perfil.png")}}'"></span>
 					</div>
-					<input type="file" name="image" class="form-control @error('image') is-invalid @enderror" {{!url('/images/small/before_'.$beforeAfter->id.'.jpg') ? 'required' : ''}} style="height: 90px">
+					<input type="file" name="image" class="form-control @error('image') is-invalid @enderror" {{!url('/images/small/before_'.$beforeAfter->id.'.webp') ? 'required' : ''}} style="height: 90px">
 					@error('image')
 						<span class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>
@@ -42,9 +42,9 @@
 				</div>
 				<div class="input-group form-group">
 					<div class="input-group-prepend">
-						<span class="input-group-addon"><img class="img-circle img-responsive imageAfter img-center"  src="{{url('/images/small/after_'.$beforeAfter->id.'.jpg')}}" onerror="this.src='{{url("/images/small/perfil.png")}}'"></span>
+						<span class="input-group-addon"><img class="img-circle img-responsive imageAfter img-center"  src="{{url('/images/small/after_'.$beforeAfter->id.'.webp')}}" onerror="this.src='{{url("/images/small/perfil.png")}}'"></span>
 					</div>
-					<input type="file" name="imageAfter" class="form-control @error('imageAfter') is-invalid @enderror" {{!url('/images/small/after_'.$beforeAfter->id.'.jpg') ? 'required' : ''}} style="height: 90px">
+					<input type="file" name="imageAfter" class="form-control @error('imageAfter') is-invalid @enderror" {{!url('/images/small/after_'.$beforeAfter->id.'.webp') ? 'required' : ''}} style="height: 90px">
 					@error('imageAfter')
 						<span class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>

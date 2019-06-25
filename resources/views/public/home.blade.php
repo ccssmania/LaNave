@@ -10,7 +10,7 @@
   <div class="carousel-inner">
     @foreach($banners as $banner)
       <div class="carousel-item  {{ $loop->first ? 'active' : '' }}">
-        <header class="masthead" style="background-image: url({{url('/images/banner_'.$banner->id.'.jpg')}}) ">
+        <header class="masthead" style="background-image: url({{url('/images/banner_'.$banner->id.'.webp')}}) ">
   	    <div class="container">
   	      <div class="intro-text text-info">
   	        <div class="intro-lead-in">{{$banner->name}}</div>
@@ -73,7 +73,7 @@
                   <i class="fas fa-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid custom-img-fluid" src="{{url('/images/product_'.$product->id.'.jpg')}}" onerror="this.src='{{url("/images/product.jpg")}}'" alt="">
+              <img class="img-fluid custom-img-fluid" src="{{url('/images/product_'.$product->id.'.webp')}}" onerror="this.src='{{url("/images/product.jpg")}}'" alt="">
             </a>
             <div class="portfolio-caption">
               <h4>{{$product->name}}</h4>
@@ -101,8 +101,8 @@
 
               <li class=" ">
                 <div class="timeline-image">
-                  <a href="{{url('/images/before_'.$bf->id.'.jpg')}}" target="_blank">
-                    <img class="rounded-circle img-fluid custom-img-fluid"  src="{{url('/images/medium/before_'.$bf->id.'.jpg')}}" alt="">
+                  <a href="{{url('/images/before_'.$bf->id.'.webp')}}" target="_blank">
+                    <img class="rounded-circle img-fluid custom-img-fluid"  src="{{url('/images/medium/before_'.$bf->id.'.webp')}}" alt="">
                   </a>
                 </div>
                 <div class="timeline-panel">
@@ -116,8 +116,8 @@
               </li>
               <li class="timeline-inverted">
                 <div class="timeline-image">
-                  <a href="{{url('/images/after_'.$bf->id.'.jpg')}}" target="_blank">
-                    <img class="rounded-circle img-fluid custom-img-fluid"  src="{{url('/images/medium/after_'.$bf->id.'.jpg')}}" alt="">
+                  <a href="{{url('/images/after_'.$bf->id.'.webp')}}" target="_blank">
+                    <img class="rounded-circle img-fluid custom-img-fluid"  src="{{url('/images/medium/after_'.$bf->id.'.webp')}}" alt="">
                   </a>
                 </div>
                 <div class="timeline-panel">
@@ -156,7 +156,7 @@
         @foreach($employees as $employe)
           <div class="col-sm-4 mx-auto">
             <div class="team-member">
-              <img class="mx-auto rounded-circle" src="{{url('/images/employe_'.$employe->id.'.jpg')}}" alt="">
+              <img class="mx-auto rounded-circle" src="{{url('/images/employe_'.$employe->id.'.webp')}}" alt="">
               <h4>{{$employe->name}}</h4>
               <p class="text-muted"></p>
               <ul class="list-inline social-buttons">
@@ -310,7 +310,7 @@
                   <!-- Project Details Go Here -->
                   <h2 class="text-uppercase">{{$product->name}}</h2>
                   <p class="item-intro text-muted">{{$product->title}}</p>
-                  <img class="img-fluid d-block mx-auto" src="{{url('/images/product_'.$product->id.'.jpg')}}" alt="">
+                  <img class="img-fluid d-block mx-auto" src="{{url('/images/product_'.$product->id.'.webp')}}" alt="">
                   <p>{!!$product->description!!}</p>
                   <ul class="list-inline">
                   @if(isset($product->price))

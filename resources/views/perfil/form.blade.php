@@ -25,7 +25,7 @@
 							<table class="table">
 								<tr>
 									<th height="70" width="200">
-										<img class="img-circle img-responsive img-center"  src="{{url('/images/medium/u_'.$user->id.'.jpg')}}" onerror="this.src='{{url("/images/medium/perfil.png")}}'">
+										<img class="img-circle img-responsive img-center"  src="{{url('/images/medium/u_'.$user->id.'.webp')}}" onerror="this.src='{{url("/images/medium/perfil.png")}}'">
 									</th>
 									<th>
 										<h3>cambiar</h3>

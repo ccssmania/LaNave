@@ -3,7 +3,7 @@
         <table class="table">
             <tr>
                 <th height="200" width="200">
-                    <img class="img-circle img-responsive img-center"  src="{{url('/images/small/user_'.$user->id.'.jpg')}}" onerror="this.src='{{url("/images/perfil.png")}}'">
+                    <img class="img-circle img-responsive img-center"  src="{{url('/images/small/user_'.$user->id.'.webp')}}" onerror="this.src='{{url("/images/perfil.png")}}'">
                 </th>
                 <th>
                 	<div class="col-md-6">	

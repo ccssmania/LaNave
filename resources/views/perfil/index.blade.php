@@ -6,7 +6,7 @@
         <table class="table">
             <tr>
                 <th height="200" width="200">
-                    <img class="img-circle img-responsive img-center"  src="{{url('/images/u_'.$user->id.'.jpg')}}" onerror="this.src='{{url("/images/perfil.png")}}'">
+                    <img class="img-circle img-responsive img-center"  src="{{url('/images/u_'.$user->id.'.webp')}}" onerror="this.src='{{url("/images/perfil.png")}}'">
                 </th>
                 <th>
                 	<div class="col-md-6">	
@@ -24,7 +24,7 @@
         @foreach($employees as $emp)
             <tr>
                 <th height="200" width="200">
-                    <img class="img-circle img-responsive img-center"  src="{{url('/images/e_'.$emp->id.'.jpg')}}" onerror="this.src='{{url("/images/perfil.png")}}'">
+                    <img class="img-circle img-responsive img-center"  src="{{url('/images/e_'.$emp->id.'.webp')}}" onerror="this.src='{{url("/images/perfil.png")}}'">
                 </th>
                 <th>
                 	<div class="col-md-6">	

@@ -32,7 +32,7 @@
 		@foreach($employees as $emp)
 		<div class="col-lg-4 mb-4">
 			<div class="card h-100 text-center">
-				<img class="card-img-top" src="{{url('/images/e_'.$emp->id.'.jpg')}}" alt="">
+				<img class="card-img-top" src="{{url('/images/e_'.$emp->id.'.webp')}}" alt="">
 				<div class="card-body">
 					<h4 class="card-title">{{$emp->name}}</h4>
 					<h6 class="card-subtitle mb-2 text-muted">{{$emp->position}}</h6>

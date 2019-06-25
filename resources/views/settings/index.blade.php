@@ -6,7 +6,7 @@
             	@foreach($employees as $employe)
                     <div class="row border">
                         <div class="col-sm-6">
-                            <img class="img-circle img-responsive img-center"  src="{{url('/images/employe_'.$employe->id.'.jpg')}}" onerror="this.src='{{url("/images/perfil.png")}}'">
+                            <img class="img-circle img-responsive img-center"  src="{{url('/images/employe_'.$employe->id.'.webp')}}" onerror="this.src='{{url("/images/perfil.png")}}'">
                         </div>
                         <div class="col-sm-4">
                             <p class="card-text"> {{$employe->name}} </p>
@@ -37,7 +37,7 @@
                 @foreach($banners as $banner)
                     <div class="row border">
                         <div class="col-sm-6">
-                            <img class="img-circle img-responsive img-center"  src="{{url('/images/banner_'.$banner->id.'.jpg')}}" onerror="this.src='{{url("/images/perfil.png")}}'">
+                            <img class="img-circle img-responsive img-center"  src="{{url('/images/banner_'.$banner->id.'.webp')}}" onerror="this.src='{{url("/images/perfil.png")}}'">
                         </div>
                         <div class="col-sm-4">
                             <p class="card-text"> {!!$banner->description!!} </p>
@@ -104,10 +104,10 @@
                 @foreach($beforeAfters as $beforeAfter)
                     <div class="row border">
                         <div class="col-sm-4">
-                            <img class="img-circle img-responsive img-center" style="max-width: 100%;"  src="{{url('/images/small/before_'.$beforeAfter->id.'.jpg')}}" onerror="this.src='{{url("/images/perfil.png")}}'">
+                            <img class="img-circle img-responsive img-center" style="max-width: 100%;"  src="{{url('/images/small/before_'.$beforeAfter->id.'.webp')}}" onerror="this.src='{{url("/images/perfil.png")}}'">
                         </div>
                         <div class="col-sm-4">
-                            <img class="img-circle img-responsive img-center" style="max-width: 100%;"  src="{{url('/images/small/after_'.$beforeAfter->id.'.jpg')}}" onerror="this.src='{{url("/images/perfil.png")}}'">
+                            <img class="img-circle img-responsive img-center" style="max-width: 100%;"  src="{{url('/images/small/after_'.$beforeAfter->id.'.webp')}}" onerror="this.src='{{url("/images/perfil.png")}}'">
                         </div>
                         <div class="col-sm-2 text-rigth">
                             <a href="{{url('/profile/before_after/edit/'.$beforeAfter->id)}}" title="Editar Antes y Después"><i class="fa fa-edit fa-lg"></i></a>

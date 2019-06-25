@@ -6,7 +6,7 @@
     <div class="row user">
         <div class="col-md-12">
           <div class="profile">
-            <div class="info"><img class="user-img" src="{{url('/images/small/user_'.$user->id.'.jpg')}}" onerror="this.src='{{url("/images/perfil.png")}}'">
+            <div class="info"><img class="user-img" src="{{url('/images/small/user_'.$user->id.'.webp')}}" onerror="this.src='{{url("/images/perfil.png")}}'">
               <h4> {{$user->name}} </h4>
               <p>{{isset($user->rol) ? $user->rol->name : ''}}</p>
             </div>

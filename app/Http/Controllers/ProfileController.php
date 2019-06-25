@@ -61,7 +61,7 @@ class ProfileController extends Controller
 		$hasFile = $request->hasFile('image') && $request->image->isValid();
 		if($user->save()){
 			if($hasFile){
-				$image = Image::make($request->image)->encode('jpg')->save(storage_path('app/images/user_'.$user->id.'.jpg'));
+				$image = Image::make($request->image)->encode('webp')->save(storage_path('app/images/user_'.$user->id.'.webp'));
                 \Session::flash('message', 'Perfil Actualizado!');
                 return redirect('/profile/0');
 			}
@@ -99,7 +99,7 @@ class ProfileController extends Controller
     	$hasFile = $request->hasFile('image') && $request->image->isValid();
 		if($employe->save()){
 			if($hasFile){
-				$image = Image::make($request->image)->encode('jpg')->save(storage_path('app/images/employe_'.$employe->id.'.jpg'));
+				$image = Image::make($request->image)->encode('webp')->save(storage_path('app/images/employe_'.$employe->id.'.webp'));
                 \Session::flash('message', 'Perfil Actualizado!');
                 return redirect('/profile/1');
 			}
@@ -137,7 +137,7 @@ class ProfileController extends Controller
         $hasFile = $request->hasFile('image') && $request->image->isValid();
         if ($employe->update($request->all())) {
          	if($hasFile){
-				$image = Image::make($request->image)->encode('jpg')->save(storage_path('app/images/employe_'.$employe->id.'.jpg'));
+				$image = Image::make($request->image)->encode('webp')->save(storage_path('app/images/employe_'.$employe->id.'.webp'));
                 \Session::flash('message', 'Perfil Actualizado!');
                 return redirect('/profile/1');
 			}
@@ -192,7 +192,7 @@ class ProfileController extends Controller
     	$hasFile = $request->hasFile('image') && $request->image->isValid();
 		if($banner->save()){
 			if($hasFile){
-				$image = Image::make($request->image)->resize(1900,1080)->encode('jpg')->save(storage_path('app/images/banner_'.$banner->id.'.jpg'));
+				$image = Image::make($request->image)->resize(1900,1080)->encode('webp')->save(storage_path('app/images/banner_'.$banner->id.'.webp'));
                 \Session::flash('message', 'Perfil Actualizado!');
                 return redirect('/profile/1');
 			}
@@ -227,7 +227,7 @@ class ProfileController extends Controller
         $hasFile = $request->hasFile('image') && $request->image->isValid();
         if ($banner->update($request->all())) {
          	if($hasFile){
-				$image = Image::make($request->image)->resize(1900,1080)->encode('jpg')->save(storage_path('app/images/banner_'.$banner->id.'.jpg'));
+				$image = Image::make($request->image)->resize(1900,1080)->encode('webp')->save(storage_path('app/images/banner_'.$banner->id.'.webp'));
                 \Session::flash('message', 'Perfil Actualizado!');
                 return redirect('/profile/1');
 			}
@@ -280,10 +280,10 @@ class ProfileController extends Controller
         $hasFileAfter = $request->hasFile('imageAfter') && $request->imageAfter->isValid();
         if($beforeAfter->save()){
             if($hasFile){
-                $image = Image::make($request->image)->encode('jpg')->save(storage_path('app/images/before_'.$beforeAfter->id.'.jpg'));
+                $image = Image::make($request->image)->encode('webp')->save(storage_path('app/images/before_'.$beforeAfter->id.'.webp'));
             }
             if($hasFileAfter){
-                $imageAfter = Image::make($request->imageAfter)->encode('jpg')->save(storage_path('app/images/after_'.$beforeAfter->id.'.jpg'));
+                $imageAfter = Image::make($request->imageAfter)->encode('webp')->save(storage_path('app/images/after_'.$beforeAfter->id.'.webp'));
             }
             \Session::flash('message', 'Perfil Actualizado');
             return redirect('/profile/1');
@@ -318,12 +318,12 @@ class ProfileController extends Controller
         $hasFileAfter = $request->hasFile('imageAfter') && $request->imageAfter->isValid();
         if ($beforeAfter->update($request->all())) {
             if($hasFile){
-                $image = Image::make($request->image)->encode('jpg')->save(storage_path('app/images/before_'.$beforeAfter->id.'.jpg'));
+                $image = Image::make($request->image)->encode('webp')->save(storage_path('app/images/before_'.$beforeAfter->id.'.webp'));
                 \Session::flash('message', 'Perfil Actualizado!');
                 return redirect('/profile/1');
             }
             if($hasFileAfter){
-                $imageAfter = Image::make($request->imageAfter)->encode('jpg')->save(storage_path('app/images/after_'.$beforeAfter->id.'.jpg'));
+                $imageAfter = Image::make($request->imageAfter)->encode('webp')->save(storage_path('app/images/after_'.$beforeAfter->id.'.webp'));
                 \Session::flash('message', 'Perfil Actualizado!');
                 return redirect('/profile/1');
             }

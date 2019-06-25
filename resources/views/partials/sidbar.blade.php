@@ -1,5 +1,5 @@
 <aside class="app-sidebar">
-  <div class="app-sidebar__user"><img class="app-sidebar__user-avatar responsive-avatar" src="{{url('/images/user_'.Auth::user()->id.'.jpg')}}" onerror="this.src='{{url("/images/small/perfil.png")}}'" alt="User Image">
+  <div class="app-sidebar__user"><img class="app-sidebar__user-avatar responsive-avatar" src="{{url('/images/user_'.Auth::user()->id.'.webp')}}" onerror="this.src='{{url("/images/small/perfil.png")}}'" alt="User Image">
     <div>
       <p class="app-sidebar__user-name">{{Auth::user()->name}}</p>
       <p class="app-sidebar__user-designation"></p>
