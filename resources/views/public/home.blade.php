@@ -10,7 +10,7 @@
   <div class="carousel-inner">
     @foreach($banners as $banner)
       <div class="carousel-item  {{ $loop->first ? 'active' : '' }}">
-        <header class="masthead" style="background-image: url({{url('/images/large/banner_'.$banner->id.'.jpg')}}) ">
+        <header class="masthead" style="background-image: url({{url('/images/banner_'.$banner->id.'.jpg')}}) ">
   	    <div class="container">
   	      <div class="intro-text text-info">
   	        <div class="intro-lead-in">{{$banner->name}}</div>
@@ -101,7 +101,7 @@
 
               <li class=" ">
                 <div class="timeline-image">
-                  <a href="{{url('/images/medium/before_'.$bf->id.'.jpg')}}" target="_blank">
+                  <a href="{{url('/images/before_'.$bf->id.'.jpg')}}" target="_blank">
                     <img class="rounded-circle img-fluid custom-img-fluid"  src="{{url('/images/medium/before_'.$bf->id.'.jpg')}}" alt="">
                   </a>
                 </div>
@@ -117,7 +117,7 @@
               <li class="timeline-inverted">
                 <div class="timeline-image">
                   <a href="{{url('/images/after_'.$bf->id.'.jpg')}}" target="_blank">
-                    <img class="rounded-circle img-fluid custom-img-fluid"  src="{{url('/images/after_'.$bf->id.'.jpg')}}" alt="">
+                    <img class="rounded-circle img-fluid custom-img-fluid"  src="{{url('/images/medium/after_'.$bf->id.'.jpg')}}" alt="">
                   </a>
                 </div>
                 <div class="timeline-panel">
