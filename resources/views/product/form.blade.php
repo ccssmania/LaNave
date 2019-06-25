@@ -60,7 +60,7 @@
 							<label class="control-label">Descripción</label>
 						</span>
 					</div>
-					<textarea class=" @error('description') is-invalid @enderror" name="description" required  placeholder="Descripcion del producto" > {{ $product->description }} </textarea>
+					<textarea class=" @error('description') is-invalid @enderror form-control" name="description" required  placeholder="Descripcion del producto" > {{ $product->description }} </textarea>
 					@error('description')
 						<span class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>
