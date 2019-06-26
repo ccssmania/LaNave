@@ -39,7 +39,7 @@
 				<div class="price col-md-12 {{isset($product->price) ? '' : 'none'}}">
 					<div class="form-group input-group " >
 						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-money"></i></span>
+							<span class="input-group-text"><i class="fa fa-money-bill-alt"></i></span>
 						</div>
 						<input type="number" name="price" class="form-control" value="{{$product->price}}"  placeholder="Precio único del producto">
 					</div>

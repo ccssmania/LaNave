@@ -319,13 +319,9 @@ class ProfileController extends Controller
         if ($beforeAfter->update($request->all())) {
             if($hasFile){
                 $image = Image::make($request->image)->encode('webp')->save(storage_path('app/images/before_'.$beforeAfter->id.'.webp'));
-                \Session::flash('message', 'Perfil Actualizado!');
-                return redirect('/profile/1');
             }
             if($hasFileAfter){
                 $imageAfter = Image::make($request->imageAfter)->encode('webp')->save(storage_path('app/images/after_'.$beforeAfter->id.'.webp'));
-                \Session::flash('message', 'Perfil Actualizado!');
-                return redirect('/profile/1');
             }
             \Session::flash('message', 'Perfil Actualizado');
             return redirect('/profile/1');

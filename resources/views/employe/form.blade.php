@@ -18,7 +18,7 @@
 				</div>
 				<div class="input-group form-group">
 					<div class="input-group-prepend">
-						<span class="input-group-text"><i class="fas fa-facebook"></i></span>
+						<span class="input-group-text"><i class="fab fa-facebook-f"></i></span>
 					</div>
 					<input id="facebook_link" type="text" class="form-control @error('facebook_link') is-invalid @enderror" name="facebook_link" value="{{ $employe->facebook_link }}"  placeholder="Link de facebook" >
 
@@ -30,7 +30,7 @@
 				</div>
 				<div class="input-group form-group">
 					<div class="input-group-prepend">
-						<span class="input-group-text"><i class="fas fa-instagram"></i></span>
+						<span class="input-group-text"><i class="fab fa-instagram"></i></span>
 					</div>
 					<input id="instagram_link" type="text" class="form-control @error('instagram_link') is-invalid @enderror" name="instagram_link" value="{{ $employe->instagram_link }}"   placeholder="Link de instagram" >
 
@@ -42,7 +42,7 @@
 				</div>
 				<div class="input-group form-group">
 					<div class="input-group-prepend">
-						<span class="input-group-text"><i class="fas fa-twitter"></i></span>
+						<span class="input-group-text"><i class="fab fa-twitter"></i></span>
 					</div>
 					<input id="twitter_link" type="text" class="form-control @error('twitter_link') is-invalid @enderror" name="twitter_link" value="{{ $employe->twitter_link }}"   placeholder="Link de twitter" >
 

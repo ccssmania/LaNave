@@ -73,7 +73,7 @@
                   <i class="fas fa-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid custom-img-fluid" src="{{url('/images/product_'.$product->id.'.webp')}}" onerror="this.src='{{url("/images/medium/product.jpg")}}'" alt="">
+              <img class="img-fluid custom-img-fluid" src="{{url('/images/medium/product_'.$product->id.'.webp')}}" onerror="this.src='{{url("/images/medium/product.jpg")}}'" alt="">
             </a>
             <div class="portfolio-caption">
               <h4>{{$product->name}}</h4>

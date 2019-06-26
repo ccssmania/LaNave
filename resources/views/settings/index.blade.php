@@ -6,7 +6,7 @@
             	@foreach($employees as $employe)
                     <div class="row border">
                         <div class="col-sm-6">
-                            <img class="img-circle img-responsive img-center"  src="{{url('/images/employe_'.$employe->id.'.webp')}}" onerror="this.src='{{url("/images/perfil.png")}}'">
+                            <img class="img-circle img-responsive img-center"  src="{{url('/images/small/employe_'.$employe->id.'.webp')}}" onerror="this.src='{{url("/images/perfil.png")}}'">
                         </div>
                         <div class="col-sm-4">
                             <p class="card-text"> {{$employe->name}} </p>
@@ -37,7 +37,7 @@
                 @foreach($banners as $banner)
                     <div class="row border">
                         <div class="col-sm-6">
-                            <img class="img-circle img-responsive img-center"  src="{{url('/images/banner_'.$banner->id.'.webp')}}" onerror="this.src='{{url("/images/perfil.png")}}'">
+                            <img class="img-circle img-responsive img-center"  src="{{url('/images/small/banner_'.$banner->id.'.webp')}}" onerror="this.src='{{url("/images/perfil.png")}}'">
                         </div>
                         <div class="col-sm-4">
                             <p class="card-text"> {!!$banner->description!!} </p>
