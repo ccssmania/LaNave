@@ -80,7 +80,7 @@ class OrderController extends Controller
     public function reject(Request $request, $id){
     	$user = \Auth::user();
         $notification = $user->notifications()->where('id',$id)->first()->delete();
-        \Session::flash("message", "Ordern Rechazada");
+        \Session::flash("message", "Orden Rechazada");
         return redirect('/notifications');
     }
 }

@@ -20,11 +20,11 @@ class OrderModel {
                 $query->whereBetween('date', [$start, $end]);
             })->get();
         }elseif(isset($start)){
-            $order->whereHas('task',function($query) use ($start,$end){
+            $order->whereHas('task',function($query) use ($start,$end,$today){
                 $query->whereBetween('date', [$start, $today]);
             });
         }
 
-        return $order->paginate(15);
+        return $order->get();
     }
 }

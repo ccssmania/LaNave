@@ -20,9 +20,7 @@
 										<option value="{{env('ORDER_STATUS_PASSED')}}" {{$request->status == env('ORDER_STATUS_PASSED') ? 'selected' : ''}}>Ordenes que ya psaron las fechas</option>
 									</select>
 								</div>
-							</div>
-							<div class="form-group row ">
-								<label class="col-md-3 col-form-label">Fechas</label>
+								<label class="col-md-4 col-form-label">Fechas</label>
 								<div class="col-md-3">
 									<input type="text" class="dateFilter form-control" name="start" placeholder="{{$request->start ? $request->start : 'inicio'}}" >
 								</div>
@@ -42,35 +40,34 @@
 	<div class="big-padding text-center blue-grey shite-text col-md-12">
 		<h1>Ordenes</h1>
 	</div>
-	<div class="container">
-		<table class="table table-bordered" id="table">
-			<thead class="elegant-color" style="background-color: #32383e; color: white;">
-				<tr>
-					<td>ID</td>
-					<td>Fecha</td>
-					<td>Product</td>
-					<td>Descripcion</td>
-					<td>Acciones</td>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach ($orders as $order)
-				<tr>
-					<td>{{ $order->id }}</td>
-					<td> Inicio: {{ $order->task ? $order->task->date : '' }} <br> Fin: {{ $order->task? $order->task->end : ''}} </td>
-					<td>{{ $order->in_order->product->name }}</td>
-					<td>Nombre : {{ $order->in_order->name }} <br> Correo: {{$order->in_order->email}} <br> Número: {{$order->in_order->number}} <br> Coche: {{$order->in_order->car_model}} - {{isset($order->in_order->category)? $order->in_order->category->name : ''}} </td>
-					<td >
-						<a href="{{url("/order/$order->id")}}">Ver</a>
-						 <a href="{{url('/order/'. $order->id .'/edit')}}">Editar</a>
-					</td>
-					@endforeach
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<div class="text-center">
-		{{$orders->links()}}
+	<div class="card">
+		<div class="card-body table-responsive">
+			
+			<table class="table table-hover table-bordered dataTable no-footer" id="table">
+				<thead class="elegant-color" style="background-color: #32383e; color: white;">
+					<tr>
+						<td>ID</td>
+						<td>Fecha</td>
+						<td>Product</td>
+						<td>Descripcion</td>
+						<td>Acciones</td>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach ($orders as $order)
+					<tr>
+						<td>{{ $order->id }}</td>
+						<td> Inicio: {{ $order->task ? $order->task->date : '' }} <br> Fin: {{ $order->task? $order->task->end : ''}} </td>
+						<td>{{ $order->in_order->product->name }}</td>
+						<td>Nombre : {{ $order->in_order->name }} <br> Correo: {{$order->in_order->email}} <br> Número: {{$order->in_order->number}} <br> Coche: {{$order->in_order->car_model}} - {{isset($order->in_order->category)? $order->in_order->category->name : ''}} </td>
+						<td >
+							
+						</td>
+						@endforeach
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 	
 @endsection

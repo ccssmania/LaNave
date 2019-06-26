@@ -7,7 +7,7 @@
   </div>
   <ul class="app-menu">
     <li>
-      <a class="app-menu__item {{get_class(Route::getCurrentRoute()->getController()) == "App\Http\Controllers\AdminController" ? 'active' : ''}}" href="{{url('/dashboard')}}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a>
+      <a class="app-menu__item {{get_class(Route::getCurrentRoute()->getController()) == "App\Http\Controllers\AdminController" ? 'active' : ''}}" href="{{url('/dashboard')}}"><i class="app-menu__icon fa fa-tachometer-alt"></i><span class="app-menu__label">Dashboard</span></a>
     </li>
     <li class="treeview">
       <a class="app-menu__item {{get_class(Route::getCurrentRoute()->getController()) == "App\Http\Controllers\ProfileController" ? 'active' : ''}}" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user"></i><span class="app-menu__label">Perfil</span><i class="treeview-indicator fa fa-angle-right"></i></a>

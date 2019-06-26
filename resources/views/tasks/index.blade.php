@@ -25,13 +25,13 @@
 				<form class="form-horizontal big-margin-top" method="POST" action="{{url('/tasks')}}">
 					{{ csrf_field() }}
 					
-					<div class="form-group ">
+					<div class="form-group row">
 						<label class="col-md-4 control-label">Titulo </label>
 						<div class="col-md-6">
 							<input required type="text" name="title"  placeholder="Titulo" class="form-control" >
 						</div>
 					</div>
-					<div class="form-group">
+					<div class="form-group row">
 						<label  class="col-md-4 control-label">Description </label>
 
 						<div class="col-md-6">
@@ -39,12 +39,34 @@
 
 						</div>
 					</div>
-					<div class="form-group" style="display: none;">
+					<div class="form-group row">
+						<label class="col-md-4 control-label">Producto (Opcional)</label>
+						<div class="col-md-6">
+							<select class="form-control" id="task_product" name="product_id">
+								<option value="">Ninguno</option>
+								@foreach($products as $product)
+									<option value="{{$product->id}}" title="{{$product->description}}">{{$product->name}}</option>
+								@endforeach
+							</select>
+						</div>
+					</div>
+					<div class="form-group row category" style="display: none;">
+						<label class="col-md-4 control-label">Categoría</label>
+						<div class="col-md-6">
+							<select class="form-control" id="task_category" name="product_category_id">
+								<option value="">Seleccionar una opción</option>
+								@foreach($categories as $category)
+									<option value="{{$category->id}}" title="{{$category->description}}">{{$category->name}}</option>
+								@endforeach
+							</select>
+						</div>
+					</div>
+					<div class="form-group row" style="display: none;">
 						<div class="col-md-6">
 							<input id="date" class="form-control"  type="text" name="date">
 						</div>
 					</div>
-					<div class="form-group" style="display: none;">
+					<div class="form-group row" style="display: none;">
 						<div class="col-md-6">
 							<input  id="end" class="form-control " type="text" name="end">
 						</div>

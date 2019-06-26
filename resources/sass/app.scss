@@ -12,7 +12,7 @@
 @import 'bootstrap-source/bootstrap';
 
 // Vendor plugin files 
-@import url(https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css);
+@import url(https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css);
 @import url(https://cdn.jsdelivr.net/npm/bootstrap4-datetimepicker@5.2.3/build/css/bootstrap-datetimepicker.min.css);
 @import 'notify';
 @import url(https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css);
@@ -256,4 +256,14 @@ hr.star-dark:after {
 }
 #messaging{
 	min-height: 400px;
+}
+
+.removebtn {
+	color:black;
+	position:absolute;
+	z-index: 1001;
+	top: 0;
+	right: 0;
+	width:13px;
+	height: 13px;
 }

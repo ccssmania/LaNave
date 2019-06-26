@@ -44,6 +44,7 @@ class CheckOrders extends Command
 
         foreach ($orders as $order) {
                $order->status = env("ORDER_STATUS_PASSED");
+               $order->save();
            }   
     }
 }

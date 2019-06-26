@@ -72,14 +72,14 @@ $(document).ready(function(){
             $(".prices").hide();
         }
 	});
-	$('.dateStart').datetimepicker({format: 'YYYY-MM-DD h:mm',
+	$('.dateStart').datetimepicker({format: 'YYYY-MM-DD h:mm:ss',
 		minDate: $.now(),
 		icons: icons,
 	});
 	
 	$('.dateStart').click(function(){
 		$('.dateEnd').prop('disabled', false);
-		$('.dateEnd').datetimepicker({format: 'YYYY-MM-DD h:mm',
+		$('.dateEnd').datetimepicker({format: 'YYYY-MM-DD h:mm:ss',
 			icons: icons,
 			minDate: $('.dateStart').val(),
 		});
@@ -130,14 +130,59 @@ $(document).ready(function(){
 		      },
 		      success: function(doc) {
 		        var events = JSON.parse(doc);
-		        
 		        callback(events);
 		      },
 
 		    });
 		},
-		
 		eventRender: function(event, element) {
+			var tday = new Date();
+			var eventDate = new Date(event.date);
+			var bool = (tday.toDateString() === eventDate.toDateString());
+			if (bool) {
+				element.css('background-color','red');
+			}
+			if(tday.getTime() > eventDate.getTime() && tday.getDate() > eventDate.getDate()){
+				element.css('background-color','#28a745')
+			}
+			element.append( "<a href='#' class='removebtn'><span >X</span></a>" );
+	        element.find(".removebtn").click(function() {
+	          element.qtip('hide');
+	          swal({
+			      title: "Esta Seguro?",
+			      text: 'Esta seguro de eliminar esta tarea',
+			      type: "error",
+			      showCancelButton: true,
+			      confirmButtonText: "Si, Eliminar",
+			      cancelButtonText: "No, cancelar!",
+			      closeOnConfirm: false,
+			      closeOnCancel: false
+			    }, function(isConfirm) {
+			      if (isConfirm) {
+			        $.ajaxSetup({
+			          headers: {
+			            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			          }
+			        });
+			        $.ajax({
+			           type:'POST',
+			           url: '/task/'+event.id+'/delete',
+			           success:function(data){
+			            swal({title: "Eliminado!", text: "Ha sido eliminado correctamente.", type: "success"},function(){
+			              $('#calendar').fullCalendar('removeEvents',event._id);
+			            });
+			             
+			           },
+			           onerror:function(e){
+			          console.log(e);
+			          swal("Algo salio mal!", "No se pudo eliminar, por favor contactar la división de sistemas.", "error");
+			           }
+			        });
+			      } else {
+			        swal("Cancelado", "El proceso fue cancelado correctamente", "error");
+			      }
+			    });
+	        });
 			element.qtip({
 				content: event.description,
 				position: {
@@ -223,6 +268,15 @@ $(document).ready(function(){
 	       .prop("checked", "")
 	       .end();
 	});
+
+	if($('#task_product') && $('#task_product').val() != "" ){
+		$('.category').show();
+		$('#task_category').prop('required',true);
+	}
+	checkCategory();
+	$('#task_product').change(function(){
+		checkCategory();
+	});
 })
 
 
@@ -272,13 +326,35 @@ function readURL(input) {
 	}
 }
 
+function checkCategory(){
+	if($('#task_product') && $('#task_product').val() != "" ){
+				$.ajax({
+			url: '/reserve/'+$('#task_product').val()+'/',
+			method: 'GET',
+			success: function(data){
+				if(data == 'OK'){
+					$('.category').hide();
+					$('.category').prop('required',false);
+					$('.category').prop('value','');
+				}
+				if(data == 'error'){
+					$('.category').show();
+					$('.category').prop('required',true);
+				}
+			},
+			error: function(e){
+				console.log(e);
+			}
+		});
+		return false;
+	}
+}
 function setPrice(){
 	if( $('.product').val()){
 		$.ajax({
-			url: '/reserve/'+$('.product').val()+'/'+$('.product_category').val(),
+			url: '/reserve/'+$('.product').val()+'/',
 			method: 'GET',
 			success: function(data){
-				console.log(data);
 				if(data == 'OK'){
 					$('.category').hide();
 					$('.category').prop('required',false);

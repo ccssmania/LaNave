@@ -11,6 +11,11 @@
     @foreach($banners as $banner)
       <div class="carousel-item  {{ $loop->first ? 'active' : '' }}">
         <header class="masthead" style="background-image: url({{url('/images/banner_'.$banner->id.'.webp')}}) ">
+          <picture>
+            <source media="(min-width: 800px)" srcset="{{url('/images/banner_'.$banner->id.'.webp')}}, {{url('/images/large/banner_'.$banner->id.'.webp')}} 2x">
+            <source media="(min-width: 450px)" srcset="{{url('/images/medium/banner_'.$banner->id.'.webp')}}, {{url('/images/large/banner_'.$banner->id.'.webp')}} 2x">
+            <img src="{{url('/images/medium/banner_'.$banner->id.'.webp')}}" srcset="{{url('/images/small/banner_'.$banner->id.'.webp')}} 2x" alt="a head carved out of wood">
+          </picture>
   	    <div class="container">
   	      <div class="intro-text text-info">
   	        <div class="intro-lead-in">{{$banner->name}}</div>
@@ -73,7 +78,7 @@
                   <i class="fas fa-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid custom-img-fluid" src="{{url('/images/product_'.$product->id.'.webp')}}" onerror="this.src='{{url("/images/product.jpg")}}'" alt="">
+              <img class="img-fluid custom-img-fluid" src="{{url('/images/product_'.$product->id.'.webp')}}" onerror="this.src='{{url("/images/medium/product.jpg")}}'" alt="">
             </a>
             <div class="portfolio-caption">
               <h4>{{$product->name}}</h4>
