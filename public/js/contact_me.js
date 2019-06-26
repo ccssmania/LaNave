@@ -31,21 +31,38 @@ $(function() {
           message: message
         },
         cache: false,
+        beforeSend: function(){
+          swal("Enviando", "Se esta enviando el mensaje", "info");
+        },
         success: function() {
+          swal.close();
           // Success message
           swal({title: "Enviado!", text: "El mensaje ha sido enviado correctamente.", type: "success"},function(){
               location.reload();
             });
         },
-        error: function() {
-          // Fail message
-          $('#success').html("<div class='alert alert-danger'>");
-          $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-            .append("</button>");
-          $('#success > .alert-danger').append($("<strong>").text("Lo sentimos " + firstName + ", Parece que el servidor no esta respondiendo. Por favor intentalo mas tarde!"));
-          $('#success > .alert-danger').append('</div>');
-          //clear all fields
-          $('#contactForm').trigger("reset");
+        error: function(e) {
+          swal.close();
+          var validation = e.responseJSON
+          if(validation.message == 'The given data was invalid.'){
+            $('#success').html("<div class='alert alert-danger'>");
+            $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+              .append("</button>");
+            $('#success > .alert-danger').append($("<strong>").text("Por favor solucione los siguientes errores " ).append("<br />"));
+            $.each(validation.errors,function(key,value){
+              $('#success > .alert-danger').append($("<strong>").text(key + ' : ' +value + '\n').append("<br />"));
+            });
+            $('#success > .alert-danger').append('</div>');
+          }else{
+            // Fail message
+            $('#success').html("<div class='alert alert-danger'>");
+            $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+              .append("</button>");
+            $('#success > .alert-danger').append($("<strong>").text("Lo sentimos " + firstName + ", Parece que el servidor no esta respondiendo. Por favor intentalo mas tarde!"));
+            $('#success > .alert-danger').append('</div>');
+            //clear all fields
+            $('#contactForm').trigger("reset");
+          }
         },
         complete: function() {
           setTimeout(function() {
