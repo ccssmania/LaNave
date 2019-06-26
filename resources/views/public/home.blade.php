@@ -10,11 +10,7 @@
   <div class="carousel-inner">
     @foreach($banners as $banner)
       <div class="carousel-item  {{ $loop->first ? 'active' : '' }}">
-        <picture>
-          <source media="(min-width: 800px)" srcset="{{url('/images/banner_'.$banner->id.'.webp')}}, {{url('/images/large/banner_'.$banner->id.'.webp')}} 2x">
-          <source media="(min-width: 450px)" srcset="{{url('/images/medium/banner_'.$banner->id.'.webp')}}, {{url('/images/large/banner_'.$banner->id.'.webp')}} 2x">
-          <img src="{{url('/images/medium/banner_'.$banner->id.'.webp')}}" srcset="{{url('/images/small/banner_'.$banner->id.'.webp')}} 2x" alt="a head carved out of wood">
-        </picture>
+        <header class="masthead" style="background-image: url({{url('/images/banner_'.$banner->id.'.webp')}}) ">
   	    <div class="container">
   	      <div class="intro-text text-info">
   	        <div class="intro-lead-in">{{$banner->name}}</div>
@@ -22,6 +18,7 @@
   	        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="{{isset($banner->link) ? '$banner->link' : '#services'}}">{{isset($banner->link) ? 'Ver' : 'Servicios'}} </a>
   	      </div>
   	    </div>
+  	  </header>
       </div>
     @endforeach
   </div>
