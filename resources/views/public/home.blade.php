@@ -10,7 +10,7 @@
   <div class="carousel-inner">
     @foreach($banners as $banner)
       <div class="carousel-item  {{ $loop->first ? 'active' : '' }}">
-        <header class="masthead" style="background-image: url({{url('/images/banner_'.$banner->id.'.webp')}}) ">
+        <header class="masthead" >
           <picture>
             <source media="(min-width: 800px)" srcset="{{url('/images/banner_'.$banner->id.'.webp')}}, {{url('/images/large/banner_'.$banner->id.'.webp')}} 2x">
             <source media="(min-width: 450px)" srcset="{{url('/images/medium/banner_'.$banner->id.'.webp')}}, {{url('/images/large/banner_'.$banner->id.'.webp')}} 2x">
