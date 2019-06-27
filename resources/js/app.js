@@ -49,7 +49,9 @@ $(document).ready(function(){
 	});
 
 	//dataTable
-	$('#table').DataTable();
+	$('#table').DataTable({
+		order: [[1,'desc']],
+	});
 
 	//prices
 	$('#price').change(function(){

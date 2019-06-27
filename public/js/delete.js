@@ -17,7 +17,7 @@ function Delete($this){
           }
         });
         $.ajax({
-           type:'POST',
+           type:'GET',
            url: $this.prop('rel'),
            success:function(data){
             swal({title: "Eliminado!", text: "Ha sido eliminado correctamente.", type: "success"},function(){

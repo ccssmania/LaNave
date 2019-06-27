@@ -33,9 +33,9 @@ trait RegistersUsers
         event(new Registered($user = $this->create($request->all())));
 
         //$this->guard()->login($user); we don't want the login after register
-
+        Auth::logout();
         return $this->registered($request, $user) 
-                        ?: redirect('/');
+                        ?: redirect('/login');
     }
 
     /**

@@ -10,28 +10,36 @@
 		<table class="table table-bordered" id="table">
 			<thead  style="background-color: #32383e; color: white;">
 				<tr>
-					<td>Titulo</td>
-					<td>Descripcion</td>
-					<td>Acciones</td>
+					<th>Titulo</th>
+					<th>Fecha</th>
+					<th>Descripcion</th>
+					<th>Acciones</th>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach ($notifications as $n)
 				<tr class="{{isset($n->read_at) ?  'table-success' : 'table-danger' }}">
 					<td>{{ $n->data['name'] }}</td>
+					<td> {{$n->created_at->diffForHumans()}} </td>
 					<td>
 						@foreach($n->data['data'] as $key => $value)
 							<strong> @lang($key) </strong> : {{$value}} <br>
 						@endforeach
 					</td>
 					<td >
-						<a href="{{$n->data['type'] == 'order_request' ? url("/notifications/$n->id/order") : url("/notifications/$n->id/contactus")}}">{{$n->data['type'] == 'order_request' ? 'Agendar' : 'Responder'}}</a>
+						@if($n->data['type'] == 'order_request')
+							<a href="{{url("/notifications/$n->id/order")}}">Agendar</a>
+						@elseif($n->data['type'] == 'contactus')
+							<a href="{{url("/notifications/$n->id/contactus")}}">Responder</a>
+						@endif
 						@if(!isset($n->read_at))
 						<br>
 						<a href="{{url('/notifications/'.$n->id.'/mark')}}" >Marcar como leido</a>
 						@endif
 						<br>
-						<a href=" {{url('/notifications/'.$n->id)}} ">Ver</a>
+						<a href=" {{url('/notifications/'.$n->id)}} " >Ver</a>
+						<br>
+						<a href="#" rel="{{url('/notifications/delete/'.$n->id)}}"  title="Eliminar notificación" onclick="Delete($(this));" style="color: red;">Eliminar <i class="fa fa-trash"></i></a></td>
 					</td>
 					@endforeach
 				</tr>

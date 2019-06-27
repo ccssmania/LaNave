@@ -15,7 +15,9 @@ Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', function(){
+	return redirect('/login');
+});
 
 Route::get('/user', 'UserController@index');
 Route::get('/about', 'HomeController@about');

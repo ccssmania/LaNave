@@ -19,7 +19,7 @@ class NotificationController extends Controller
 	
     public function index(){
     	$user = \Auth::user();
-    	$notifications = $user->unreadNotifications;
+    	$notifications = $user->unreadNotifications->sortBy('created_at');
     	return view('notifications.index', compact('notifications'));
     }
 
